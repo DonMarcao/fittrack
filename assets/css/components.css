@@ -1,0 +1,106 @@
+/* Reusable Components */
+
+/* ========== BUTTONS ========== */
+
+button,
+.btn {
+    display: inline-block;
+    padding: var(--space-3) var(--space-5);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    border-radius: var(--radius-md);
+    transition: all var(--transition-base);
+    cursor: pointer;
+    border: none;
+    text-align: center;
+    min-height: 44px; /* Touch-friendly */
+}
+
+/* Primary Button */
+.btn-primary {
+    background-color: var(--primary-green);
+    color: white;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(40, 167, 69, 0.3);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+/* Secondary Button */
+.btn-secondary {
+    background-color: transparent;
+    color: var(--text-primary);
+    border: 2px solid var(--border-color);
+}
+
+.btn-secondary:hover {
+    background-color: var(--background-hover);
+    border-color: var(--primary-green);
+    color: var(--primary-green);
+}
+
+/* Danger Button */
+.btn-danger {
+    background-color: var(--danger);
+    color: white;
+    border: none;
+}
+
+.btn-danger:hover {
+    background-color: var(--danger-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(220, 53, 69, 0.3);
+}
+
+/* Icon Button */
+.btn-icon {
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-full);
+    background-color: var(--background-card);
+    border: 1px solid var(--border-color);
+}
+
+.btn-icon:hover {
+    background-color: var(--background-hover);
+    border-color: var(--primary-green);
+    color: var(--primary-green);
+}
+
+/* Button sizes */
+.btn-small {
+    padding: var(--space-2) var(--space-4);
+    font-size: var(--font-size-small);
+    min-height: 36px;
+}
+
+.btn-large {
+    padding: var(--space-4) var(--space-6);
+    font-size: var(--font-size-h5);
+    min-height: 52px;
+}
+
+/* Disabled state */
+button:disabled,
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+button:disabled:hover,
+.btn:disabled:hover {
+    transform: none;
+    box-shadow: none;
+}
