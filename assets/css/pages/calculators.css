@@ -1,0 +1,137 @@
+/* Calculators Page Styles */
+
+/* Calculators Grid */
+.calculators-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: var(--space-8);
+    margin-top: var(--space-6);
+}
+
+/* Individual Calculator Card */
+.calculator-card {
+    background-color: var(--background-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    box-shadow: var(--shadow-sm);
+}
+
+.calculator-card h2 {
+    color: var(--primary-green);
+    margin-bottom: var(--space-2);
+    font-size: var(--font-size-h3);
+}
+
+.calculator-card > p {
+    color: var(--text-secondary);
+    margin-bottom: var(--space-6);
+}
+
+/* Form styling within calculators */
+.calculator-card form {
+    margin-bottom: var(--space-6);
+}
+
+.calculator-card .form-group {
+    margin-bottom: var(--space-5);
+}
+
+.calculator-card button[type="submit"] {
+    width: 100%;
+}
+
+/* Result Display */
+.calculator-card .result {
+    margin-top: var(--space-6);
+    padding: var(--space-5);
+    background-color: var(--success-light);
+    border-radius: var(--radius-md);
+    border-left: 4px solid var(--success);
+}
+
+.calculator-card .result h3 {
+    color: var(--success-dark);
+    margin-bottom: var(--space-2);
+    font-size: var(--font-size-h4);
+}
+
+.calculator-card .result p {
+    margin: 0;
+    color: var(--text-primary);
+    font-size: var(--font-size-h3);
+    font-weight: var(--font-weight-bold);
+}
+
+.calculator-card .result .category {
+    display: inline-block;
+    margin-top: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    background-color: var(--success);
+    color: white;
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-small);
+    font-weight: var(--font-weight-semibold);
+}
+
+/* BMI Category colors */
+.result .category.underweight {
+    background-color: var(--info);
+}
+
+.result .category.normal {
+    background-color: var(--success);
+}
+
+.result .category.overweight {
+    background-color: var(--warning);
+}
+
+.result .category.obese {
+    background-color: var(--danger);
+}
+
+/* Help Text */
+.calculator-card .help-text {
+    margin-top: var(--space-6);
+    padding: var(--space-4);
+    background-color: var(--background-hover);
+    border-radius: var(--radius-md);
+}
+
+.calculator-card .help-text h4 {
+    color: var(--text-primary);
+    margin-bottom: var(--space-3);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+}
+
+.calculator-card .help-text ul {
+    list-style: disc;
+    padding-left: var(--space-5);
+    margin: 0;
+}
+
+.calculator-card .help-text li {
+    color: var(--text-secondary);
+    margin-bottom: var(--space-2);
+    font-size: var(--font-size-small);
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+    .calculators-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-6);
+    }
+    
+    .calculator-card {
+        padding: var(--space-5);
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .calculators-grid {
+        grid-template-columns: 1fr;
+    }
+}
