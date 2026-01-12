@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="FitTrack - Personal fitness progress tracker to log workouts and visualize improvements over time">
     <title>FitTrack - Personal Fitness Tracker</title>
-    
+
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -25,11 +25,46 @@
     </header>
 
     <!-- Main Content -->
-    <main>
-        <h1>Dashboard</h1>
-        <p>Welcome to FitTrack - Your personal fitness progress tracker</p>
-        
-        
+    <main class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>Track Your Fitness Progress</h1>
+            <p>Log workouts, visualize improvements, achieve your goals</p>
+            <button class="btn-primary btn-large">+ Add Workout</button>
+        </section>
+
+        <!-- Stats Grid -->
+        <section class="stats-grid">
+            <div class="stat-card">
+                <h3>Total Workouts</h3>
+                <p class="stat-value">0</p>
+            </div>
+            <div class="stat-card">
+                <h3>This Week</h3>
+                <p class="stat-value">0</p>
+            </div>
+            <div class="stat-card">
+                <h3>Last Workout</h3>
+                <p class="stat-value">--</p>
+            </div>
+            <div class="stat-card">
+                <h3>Current Streak</h3>
+                <p class="stat-value">0</p>
+            </div>
+        </section>
+
+        <!-- Recent Workouts -->
+        <section class="recent-workouts">
+            <h2>
+                Recent Workouts
+                <a href="history.html" class="view-all">View All →</a>
+            </h2>
+            
+            <div class="empty-state">
+                <p>No workouts yet. Start tracking your progress!</p>
+                <button class="btn-primary">Add Your First Workout</button>
+            </div>
+        </section>
     </main>
 
     

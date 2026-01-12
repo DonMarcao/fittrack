@@ -6,6 +6,9 @@
 @import url('layout.css');
 @import url('components.css');
 
+/* Page-specific styles */
+@import url('pages/dashboard.css');
+
 /* Google Fonts - Inter */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 

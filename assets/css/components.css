@@ -446,3 +446,85 @@ nav {
         gap: var(--space-2);
     }
 }
+
+/* ========== RESPONSIVE ADJUSTMENTS ========== */
+
+/* Mobile - Touch-friendly improvements */
+@media (max-width: 767px) {
+    /* Larger touch targets */
+    button,
+    .btn,
+    input,
+    select {
+        min-height: 48px;
+        font-size: 16px; /* Prevent iOS zoom */
+    }
+    
+    /* Stack navigation vertically */
+    .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .page-header .btn-primary {
+        width: 100%;
+    }
+    
+    /* Full-width cards on mobile */
+    .card,
+    .stat-card,
+    .workout-card,
+    .calculator-card {
+        width: 100%;
+    }
+    
+    /* Stack calculator grid */
+    .calculators-grid {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-6);
+    }
+    
+    /* Filters stack vertically */
+    .filters {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-3);
+        margin-bottom: var(--space-6);
+    }
+    
+    .filters input,
+    .filters select {
+        width: 100%;
+    }
+}
+
+/* Tablet adjustments */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .calculators-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--space-6);
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Desktop enhancements */
+@media (min-width: 1024px) {
+    .calculators-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-8);
+    }
+    
+    .hero h1 {
+        font-size: 48px;
+    }
+    
+    .hero p {
+        font-size: var(--font-size-h3);
+    }
+}

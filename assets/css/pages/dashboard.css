@@ -1,0 +1,78 @@
+/* Dashboard Page Styles */
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: var(--space-10) var(--space-4);
+    background: linear-gradient(135deg, var(--primary-light) 0%, var(--background-card) 100%);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--space-8);
+}
+
+.hero h1 {
+    font-size: var(--font-size-h1);
+    color: var(--primary-green);
+    margin-bottom: var(--space-4);
+}
+
+.hero p {
+    font-size: var(--font-size-h4);
+    color: var(--text-secondary);
+    margin-bottom: var(--space-6);
+}
+
+/* Stats Grid */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--space-4);
+    margin-bottom: var(--space-8);
+}
+
+/* Recent Workouts Section */
+.recent-workouts {
+    margin-bottom: var(--space-8);
+}
+
+.recent-workouts h2 {
+    margin-bottom: var(--space-4);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.recent-workouts .view-all {
+    font-size: var(--font-size-small);
+    color: var(--primary-green);
+    font-weight: var(--font-weight-medium);
+}
+
+.recent-workouts .view-all:hover {
+    text-decoration: underline;
+}
+
+/* Quick Actions */
+.quick-actions {
+    display: flex;
+    gap: var(--space-4);
+    margin-top: var(--space-6);
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+    .hero h1 {
+        font-size: 28px;
+    }
+    
+    .hero p {
+        font-size: var(--font-size-base);
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .quick-actions {
+        flex-direction: column;
+    }
+}
