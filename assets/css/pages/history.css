@@ -1,0 +1,119 @@
+/* History Page Styles */
+
+/* Filters Section */
+.filters {
+    display: flex;
+    gap: var(--space-4);
+    margin-bottom: var(--space-6);
+    padding: var(--space-5);
+    background-color: var(--background-card);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-color);
+}
+
+.filters input[type="text"] {
+    flex: 2;
+}
+
+.filters select {
+    flex: 1;
+    min-width: 150px;
+}
+
+/* Workout List */
+.workout-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+/* Workout Table (desktop alternative) */
+.workout-table {
+    width: 100%;
+    background-color: var(--background-card);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+}
+
+.workout-table table {
+    width: 100%;
+}
+
+.workout-table thead {
+    background-color: var(--primary-green);
+    color: white;
+}
+
+.workout-table th {
+    padding: var(--space-4);
+    text-align: left;
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--font-size-small);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.workout-table td {
+    padding: var(--space-4);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.workout-table tr:last-child td {
+    border-bottom: none;
+}
+
+.workout-table tr:hover {
+    background-color: var(--background-hover);
+}
+
+/* PR Badge */
+.pr-badge {
+    display: inline-block;
+    background-color: var(--warning);
+    color: white;
+    padding: var(--space-1) var(--space-2);
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    margin-left: var(--space-2);
+}
+
+/* Action buttons in table */
+.workout-table .btn-icon {
+    width: 36px;
+    height: 36px;
+}
+
+/* Responsive - Mobile */
+@media (max-width: 767px) {
+    .filters {
+        flex-direction: column;
+        gap: var(--space-3);
+    }
+    
+    .filters input,
+    .filters select {
+        width: 100%;
+    }
+    
+    /* Hide table on mobile, show cards instead */
+    .workout-table {
+        display: none;
+    }
+    
+    .workout-list {
+        display: flex;
+    }
+}
+
+/* Desktop - Show table */
+@media (min-width: 768px) {
+    .workout-list .workout-card {
+        display: none;
+    }
+    
+    .workout-table {
+        display: block;
+    }
+}
