@@ -1,0 +1,83 @@
+/* Typography Styles */
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-tight);
+    color: var(--text-primary);
+    margin-bottom: var(--space-4);
+}
+
+h1 {
+    font-size: var(--font-size-h1);
+    font-weight: var(--font-weight-extrabold);
+}
+
+h2 {
+    font-size: var(--font-size-h2);
+}
+
+h3 {
+    font-size: var(--font-size-h3);
+}
+
+h4 {
+    font-size: var(--font-size-h4);
+    font-weight: var(--font-weight-semibold);
+}
+
+h5 {
+    font-size: var(--font-size-h5);
+    font-weight: var(--font-weight-semibold);
+}
+
+/* Paragraphs */
+p {
+    margin-bottom: var(--space-4);
+    color: var(--text-primary);
+}
+
+/* Links */
+a {
+    color: var(--primary-green);
+    transition: color var(--transition-base);
+}
+
+a:hover {
+    color: var(--primary-dark);
+}
+
+/* Small text */
+small, .text-small {
+    font-size: var(--font-size-small);
+    color: var(--text-secondary);
+}
+
+/* Muted text */
+.text-muted {
+    color: var(--text-muted);
+}
+
+/* Text utilities */
+.text-center {
+    text-align: center;
+}
+
+.text-bold {
+    font-weight: var(--font-weight-bold);
+}
+
+.text-semibold {
+    font-weight: var(--font-weight-semibold);
+}
+
+/* Desktop adjustments */
+@media (min-width: 1024px) {
+    h1 {
+        font-size: 40px;
+    }
+    
+    h2 {
+        font-size: 32px;
+    }
+}
