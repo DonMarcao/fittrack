@@ -1,0 +1,18 @@
+# Operating System
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Temporary
+*.tmp
+*.log
+*.swp
+
+# Personal notes 
+notes.txt
+TODO.txt
+docs/planning/
+
+# Node modules 
+node_modules/
