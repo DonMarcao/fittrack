@@ -1,0 +1,113 @@
+/* CSS Custom Properties (Variables) */
+
+:root {
+    /* Colors - Light Theme (Default) */
+    --primary-green: #28a745;
+    --primary-dark: #1e7e34;
+    --primary-light: #d4edda;
+    
+    --background-main: #ffffff;
+    --background-card: #f8f9fa;
+    --background-hover: #e9ecef;
+    
+    --text-primary: #212529;
+    --text-secondary: #6c757d;
+    --text-muted: #adb5bd;
+    
+    --border-color: #dee2e6;
+    --border-light: #e9ecef;
+    
+    /* Semantic Colors */
+    --success: #28a745;
+    --success-light: #d4edda;
+    --success-dark: #1e7e34;
+    
+    --danger: #dc3545;
+    --danger-light: #f8d7da;
+    --danger-dark: #bd2130;
+    
+    --warning: #ffc107;
+    --warning-light: #fff3cd;
+    --warning-dark: #d39e00;
+    
+    --info: #17a2b8;
+    --info-light: #d1ecf1;
+    --info-dark: #117a8b;
+    
+    /* Typography */
+    --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 
+                     Roboto, 'Helvetica Neue', Arial, sans-serif;
+    
+    --font-size-xs: 12px;
+    --font-size-small: 14px;
+    --font-size-base: 16px;
+    --font-size-h5: 18px;
+    --font-size-h4: 20px;
+    --font-size-h3: 24px;
+    --font-size-h2: 28px;
+    --font-size-h1: 32px;
+    --font-size-stat: 36px;
+    
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    --font-weight-extrabold: 800;
+    
+    --line-height-tight: 1.2;
+    --line-height-normal: 1.5;
+    --line-height-relaxed: 1.75;
+    
+    /* Spacing */
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-5: 20px;
+    --space-6: 24px;
+    --space-8: 32px;
+    --space-10: 40px;
+    --space-12: 48px;
+    --space-16: 64px;
+    
+    /* Border Radius */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-full: 9999px;
+    
+    /* Shadows */
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.15);
+    
+    /* Transitions */
+    --transition-fast: 0.15s ease;
+    --transition-base: 0.2s ease;
+    --transition-slow: 0.3s ease;
+}
+
+/* Dark Theme */
+[data-theme="dark"] {
+    --primary-green: #28a745;
+    --primary-dark: #34ce57;
+    --primary-light: #1a5928;
+    
+    --background-main: #1a1a1a;
+    --background-card: #2d2d2d;
+    --background-hover: #3a3a3a;
+    
+    --text-primary: #f8f9fa;
+    --text-secondary: #adb5bd;
+    --text-muted: #6c757d;
+    
+    --border-color: #3a3a3a;
+    --border-light: #2d2d2d;
+}
+
+/* Smooth theme transition */
+* {
+    transition: background-color var(--transition-slow),
+                color var(--transition-slow),
+                border-color var(--transition-slow);
+}
