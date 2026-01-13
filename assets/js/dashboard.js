@@ -17,15 +17,18 @@ const Dashboard = {
      * Setup event listeners
      */
     setupEventListeners() {
-        // Add workout buttons
-        const addButtons = document.querySelectorAll('.btn-primary');
+        // Add workout buttons - more specific selector
+        const addButtons = document.querySelectorAll('.btn-primary, button.btn-primary');
         addButtons.forEach(btn => {
-            if (btn.textContent.includes('Add') || btn.textContent.includes('+')) {
-                btn.addEventListener('click', () => this.showAddWorkoutModal());
+            const text = btn.textContent.trim();
+            if (text.includes('Add') || text.includes('+') || text.includes('Workout')) {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    this.showAddWorkoutModal();
+                });
+                console.log('Added click listener to:', text);
             }
         });
-    },
-
     /**
      * Render dashboard
      */
@@ -215,3 +218,236 @@ const Dashboard = {
                 </div>
                 <div class="modal-body">
                     <form id="add-workout-form">
+                        <div class="form-group">
+                            <label for="add-exercise">Exercise Name *</label>
+                            <input type="text" id="add-exercise" name="exercise" placeholder="e.g., Bench Press" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="add-date">Date *</label>
+                            <input type="date" id="add-date" name="date" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="add-sets">Sets *</label>
+                            <input type="number" id="add-sets" name="sets" placeholder="3" min="1" max="20" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="add-reps">Reps *</label>
+                            <input type="number" id="add-reps" name="reps" placeholder="10" min="1" max="100" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="add-weight">Weight (kg) *</label>
+                            <input type="number" id="add-weight" name="weight" placeholder="80" min="0.5" max="500" step="0.5" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-secondary" data-action="close">Cancel</button>
+                    <button type="submit" class="btn-primary" data-action="save">Add Workout</button>
+                </div>
+            </div>
+        `;
+
+        // Add to body
+        document.body.appendChild(overlay);
+        document.body.classList.add('modal-open');
+
+        // Set today's date
+        const dateInput = overlay.querySelector('#add-date');
+        dateInput.value = Utils.getTodayDate();
+
+        // Setup event listeners
+        const form = overlay.querySelector('#add-workout-form');
+        const closeButtons = overlay.querySelectorAll('[data-action="close"]');
+        const saveButton = overlay.querySelector('[data-action="save"]');
+
+        // Close modal
+        closeButtons.forEach(btn => {
+            btn.addEventListener('click', () => this.closeModal('add-workout-modal'));
+        });
+
+        // Click outside to close
+        overlay.addEventListener('click', (e) => {
+            if (e.target === overlay) {
+                this.closeModal('add-workout-modal');
+            }
+        });
+
+        // Save workout
+        saveButton.addEventListener('click', () => {
+            const success = Workout.addWorkout(form);
+            
+            if (success) {
+                this.closeModal('add-workout-modal');
+            }
+        });
+
+        // Enter key to save
+        form.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && e.target.tagName !== 'TEXTAREA') {
+                e.preventDefault();
+                saveButton.click();
+            }
+        });
+
+        // Focus first input
+        setTimeout(() => {
+            overlay.querySelector('#add-exercise').focus();
+        }, 100);
+    },
+
+    /**
+     * Edit workout
+     * @param {string} id - Workout ID
+     */
+    editWorkout(id) {
+        const workout = Workout.getWorkoutById(id);
+        
+        if (!workout) {
+            Notifications.error('Workout not found');
+            return;
+        }
+
+        this.showEditWorkoutModal(workout);
+    },
+
+    /**
+     * Show edit workout modal
+     * @param {Object} workout - Workout to edit
+     */
+    showEditWorkoutModal(workout) {
+        // Create modal overlay
+        const overlay = document.createElement('div');
+        overlay.className = 'modal-overlay';
+        overlay.id = 'edit-workout-modal';
+
+        // Create modal
+        overlay.innerHTML = `
+            <div class="modal form-modal">
+                <div class="modal-header">
+                    <h2 class="modal-title">Edit Workout</h2>
+                    <button class="modal-close" data-action="close">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form id="edit-workout-form">
+                        <input type="hidden" name="id" value="${workout.id}">
+                        
+                        <div class="form-group">
+                            <label for="edit-exercise">Exercise Name *</label>
+                            <input type="text" id="edit-exercise" name="exercise" value="${Utils.sanitizeHTML(workout.exercise)}" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="edit-date">Date *</label>
+                            <input type="date" id="edit-date" name="date" value="${workout.date}" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="edit-sets">Sets *</label>
+                            <input type="number" id="edit-sets" name="sets" value="${workout.sets}" min="1" max="20" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="edit-reps">Reps *</label>
+                            <input type="number" id="edit-reps" name="reps" value="${workout.reps}" min="1" max="100" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="edit-weight">Weight (kg) *</label>
+                            <input type="number" id="edit-weight" name="weight" value="${workout.weight}" min="0.5" max="500" step="0.5" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-secondary" data-action="close">Cancel</button>
+                    <button type="submit" class="btn-primary" data-action="save">Save Changes</button>
+                </div>
+            </div>
+        `;
+
+        // Add to body
+        document.body.appendChild(overlay);
+        document.body.classList.add('modal-open');
+
+        // Setup event listeners
+        const form = overlay.querySelector('#edit-workout-form');
+        const closeButtons = overlay.querySelectorAll('[data-action="close"]');
+        const saveButton = overlay.querySelector('[data-action="save"]');
+
+        // Close modal
+        closeButtons.forEach(btn => {
+            btn.addEventListener('click', () => this.closeModal('edit-workout-modal'));
+        });
+
+        // Click outside to close
+        overlay.addEventListener('click', (e) => {
+            if (e.target === overlay) {
+                this.closeModal('edit-workout-modal');
+            }
+        });
+
+        // Save changes
+        saveButton.addEventListener('click', () => {
+            const formData = new FormData(form);
+            const id = formData.get('id');
+            const data = {
+                exercise: formData.get('exercise'),
+                date: formData.get('date'),
+                sets: formData.get('sets'),
+                reps: formData.get('reps'),
+                weight: formData.get('weight')
+            };
+
+            const success = Workout.updateWorkout(id, data);
+            
+            if (success) {
+                this.closeModal('edit-workout-modal');
+            }
+        });
+
+        // Enter key to save
+        form.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                saveButton.click();
+            }
+        });
+
+        // Focus first input
+        setTimeout(() => {
+            overlay.querySelector('#edit-exercise').focus();
+        }, 100);
+    },
+
+    /**
+     * Close modal by ID
+     * @param {string} modalId - Modal ID
+     */
+    closeModal(modalId) {
+        const modal = document.getElementById(modalId);
+        
+        if (modal) {
+            modal.classList.add('closing');
+            document.body.classList.remove('modal-open');
+            
+            setTimeout(() => {
+                modal.remove();
+            }, 300);
+        }
+    }
+};
+
+// Initialize dashboard if on dashboard page
+if (document.addEventListener) {
+    document.addEventListener('DOMContentLoaded', () => {
+        if (App.currentPage === 'dashboard') {
+            Dashboard.init();
+        }
+    });
+}
+
+// Make available globally
+window.Dashboard = Dashboard;
