@@ -171,3 +171,47 @@ const Dashboard = {
         card.className = 'workout-card';
         
         const volume = Utils.calculateVolume(workout);
+        
+        card.innerHTML = `
+            <div class="workout-info">
+                <h4>${Utils.sanitizeHTML(workout.exercise)}</h4>
+                <p>${Utils.formatDate(workout.date)} • ${workout.sets}×${workout.reps} @ ${workout.weight}kg • ${volume}kg total</p>
+            </div>
+            <div class="workout-actions">
+                <button class="btn-icon" data-action="edit" data-id="${workout.id}" title="Edit">
+                    ✏️
+                </button>
+                <button class="btn-icon" data-action="delete" data-id="${workout.id}" title="Delete">
+                    🗑️
+                </button>
+            </div>
+        `;
+
+        // Add event listeners
+        const editBtn = card.querySelector('[data-action="edit"]');
+        const deleteBtn = card.querySelector('[data-action="delete"]');
+
+        editBtn.addEventListener('click', () => this.editWorkout(workout.id));
+        deleteBtn.addEventListener('click', () => Workout.deleteWithConfirmation(workout.id));
+
+        return card;
+    },
+
+    /**
+     * Show add workout modal
+     */
+    showAddWorkoutModal() {
+        // Create modal overlay
+        const overlay = document.createElement('div');
+        overlay.className = 'modal-overlay';
+        overlay.id = 'add-workout-modal';
+
+        // Create modal
+        overlay.innerHTML = `
+            <div class="modal form-modal">
+                <div class="modal-header">
+                    <h2 class="modal-title">Add Workout</h2>
+                    <button class="modal-close" data-action="close">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form id="add-workout-form">
