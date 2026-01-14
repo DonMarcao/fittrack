@@ -29,6 +29,14 @@ const Dashboard = {
                 console.log('Added click listener to:', text);
             }
         });
+
+        // Export button
+        const exportBtn = document.getElementById('export-btn');
+        if (exportBtn) {
+            exportBtn.addEventListener('click', () => Workout.exportToCSV());
+        }
+    },
+
     /**
      * Render dashboard
      */
@@ -441,13 +449,14 @@ const Dashboard = {
 };
 
 // Initialize dashboard if on dashboard page
-if (document.addEventListener) {
-    document.addEventListener('DOMContentLoaded', () => {
-        if (App.currentPage === 'dashboard') {
+document.addEventListener('DOMContentLoaded', () => {
+    // Small delay to ensure App is initialized
+    setTimeout(() => {
+        if (window.App && App.currentPage === 'dashboard') {
             Dashboard.init();
         }
-    });
-}
+    }, 100);
+});
 
 // Make available globally
 window.Dashboard = Dashboard;
