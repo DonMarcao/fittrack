@@ -3,9 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="FitTrack - Personal fitness progress tracker to log workouts and visualize improvements over time">
-    <title>FitTrack - Personal Fitness Tracker</title>
-
+    <title>FitTrack - Dashboard</title>
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -55,22 +53,23 @@
 
         <!-- Recent Workouts -->
         <section class="recent-workouts">
-            <h2>
-                Recent Workouts
-                <a href="history.html" class="view-all">View All →</a>
-            </h2>
-            
-            <div class="empty-state">
-                <p>No workouts yet. Start tracking your progress!</p>
-                <button class="btn-primary">Add Your First Workout</button>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                <h2 style="margin: 0;">Recent Workouts</h2>
+                <div style="display: flex; gap: 0.75rem; align-items: center;">
+                    <button id="export-btn" class="btn-secondary btn-small">📥 Export CSV</button>
+                    <a href="history.html" class="view-all">View All →</a>
+                </div>
             </div>
+            <!-- Workouts will be inserted here by JavaScript -->
         </section>
     </main>
 
-    
+    <!-- Footer -->
     <footer>
         <p>&copy; 2026 FitTrack | Developed by Marcus Machado | Your data stays on your device</p>
     </footer>
+
+    <!-- JavaScript -->
     <script src="assets/js/storage.js"></script>
     <script src="assets/js/utils.js"></script>
     <script src="assets/js/validation.js"></script>
