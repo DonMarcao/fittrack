@@ -123,22 +123,34 @@ const Dashboard = {
      * Display recent workouts
      */
     displayRecentWorkouts() {
+        console.log('=== displayRecentWorkouts CALLED ===');
+        
         const container = document.querySelector('.recent-workouts');
-        if (!container) return;
+        console.log('Container found:', container);
+        
+        if (!container) {
+            console.error('Container .recent-workouts not found!');
+            return;
+        }
 
         const workouts = Workout.getAllWorkouts();
+        console.log('Total workouts:', workouts.length);
+        
         const sorted = Utils.sortByDateDesc(workouts);
         const recent = sorted.slice(0, 5); // Last 5 workouts
+        console.log('Recent workouts to display:', recent.length);
 
         // Find or create workout list
         let listContainer = container.querySelector('.workout-list');
         if (!listContainer) {
+            console.log('Creating new .workout-list container');
             listContainer = document.createElement('div');
             listContainer.className = 'workout-list';
             
             // Remove empty state if exists
             const emptyState = container.querySelector('.empty-state');
             if (emptyState) {
+                console.log('Removing empty state');
                 emptyState.remove();
             }
             
@@ -147,8 +159,10 @@ const Dashboard = {
 
         // Clear existing content
         listContainer.innerHTML = '';
+        console.log('Cleared list container');
 
         if (recent.length === 0) {
+            console.log('No workouts, showing empty state');
             // Show empty state
             const emptyState = document.createElement('div');
             emptyState.className = 'empty-state';
@@ -166,10 +180,16 @@ const Dashboard = {
         }
 
         // Display recent workouts
-        recent.forEach(workout => {
+        console.log('Creating workout cards...');
+        recent.forEach((workout, index) => {
+            console.log(`Creating card ${index + 1} for:`, workout.exercise);
             const card = this.createWorkoutCard(workout);
+            console.log('Card created:', card);
             listContainer.appendChild(card);
         });
+        
+        console.log('Total cards added:', recent.length);
+        console.log('List container children:', listContainer.children.length);
     },
 
     /**
