@@ -223,7 +223,11 @@ const Dashboard = {
         const deleteBtn = card.querySelector('[data-action="delete"]');
 
         editBtn.addEventListener('click', () => this.editWorkout(workout.id));
-        deleteBtn.addEventListener('click', () => Workout.deleteWithConfirmation(workout.id));
+        deleteBtn.addEventListener('click', () => {
+            Workout.deleteWithConfirmation(workout.id);
+            // Refresh after short delay (wait for user confirmation)
+            setTimeout(() => this.render(), 500);
+        });
 
         return card;
     },
@@ -310,6 +314,7 @@ const Dashboard = {
             
             if (success) {
                 this.closeModal('add-workout-modal');
+                this.render();
             }
         });
 
@@ -433,6 +438,7 @@ const Dashboard = {
             
             if (success) {
                 this.closeModal('edit-workout-modal');
+                this.render();
             }
         });
 

@@ -140,20 +140,20 @@ const Workout = {
         
         if (!workout) {
             Notifications.error('Workout not found');
-            return;
+            return false;
         }
 
-        // Show confirmation dialog
-        const confirmed = confirm(
-            `Are you sure you want to delete this workout?\n\n` +
-            `Exercise: ${workout.exercise}\n` +
-            `Date: ${Utils.formatDate(workout.date)}\n` +
-            `${workout.sets} sets × ${workout.reps} reps @ ${workout.weight} kg`
-        );
-
-        if (confirmed) {
-            this.deleteWorkout(id);
+        const message = `Delete "${workout.exercise}" from ${Utils.formatDate(workout.date)}?\n\nThis action cannot be undone.`;
+        
+        if (confirm(message)) {
+            const success = this.deleteWorkout(id);
+            if (success && window.App) {
+                App.refresh();
+            }
+            return success;
         }
+        
+        return false;
     },
 
     /**
