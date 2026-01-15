@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="View your complete workout history and track your fitness progress over time">
-    <title>Workout History - FitTrack</title>
+    <title>FitTrack - Workout History</title>
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -24,10 +23,10 @@
     </header>
 
     <!-- Main Content -->
-    <main>
+    <main class="container">
         <div class="page-header">
             <h1>Workout History</h1>
-            <button class="btn-primary">+ Add Workout</button>
+            <button class="btn-primary" id="add-workout-btn">+ Add Workout</button>
         </div>
 
         <!-- Filters Section -->
@@ -39,17 +38,32 @@
                 <option value="month">Last 30 Days</option>
                 <option value="year">Last Year</option>
             </select>
+            <button class="btn-secondary btn-small" id="clear-filters">Clear Filters</button>
+        </section>
+
+        <!-- Stats Summary -->
+        <section class="stats-summary">
+            <div class="stat-card">
+                <h3>Total Workouts</h3>
+                <p class="stat-value" id="total-count">0</p>
+            </div>
+            <div class="stat-card">
+                <h3>Total Volume</h3>
+                <p class="stat-value" id="total-volume">0kg</p>
+            </div>
+            <div class="stat-card">
+                <h3>Exercises</h3>
+                <p class="stat-value" id="unique-exercises">0</p>
+            </div>
         </section>
 
         <!-- Workout List -->
-        <section class="workout-list">
-            
+        <section class="workout-list" id="workout-list">
+            <!-- Empty state (will be replaced by JavaScript) -->
             <div class="empty-state">
-                <p>No workouts yet. Start tracking your progress!</p>
+                <p>No workouts found. Start tracking your progress!</p>
                 <button class="btn-primary">Add Your First Workout</button>
             </div>
-
-            
         </section>
     </main>
 
@@ -57,12 +71,14 @@
     <footer>
         <p>&copy; 2026 FitTrack | Developed by Marcus Machado | Your data stays on your device</p>
     </footer>
+
+    <!-- JavaScript -->
     <script src="assets/js/storage.js"></script>
     <script src="assets/js/utils.js"></script>
     <script src="assets/js/validation.js"></script>
     <script src="assets/js/notifications.js"></script>
     <script src="assets/js/workout.js"></script>
-    <script src="assets/js/dashboard.js"></script>
+    <script src="assets/js/history.js"></script>
     <script src="assets/js/main.js"></script>
 </body>
 </html>
