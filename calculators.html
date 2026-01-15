@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Calculate your BMI and estimated one-rep max (1RM) with our fitness calculators">
-    <title>Fitness Calculators - FitTrack</title>
+    <title>FitTrack - Calculators</title>
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -24,90 +23,82 @@
     </header>
 
     <!-- Main Content -->
-    <main>
-        <h1>Fitness Calculators</h1>
+    <main class="container">
+        <div class="page-header">
+            <h1>Fitness Calculators</h1>
+            <p>Calculate your BMI and estimate your One Rep Max</p>
+        </div>
 
-        <div class="calculators-grid">
+        <!-- Calculators Grid -->
+        <section class="calculators-grid">
             <!-- BMI Calculator -->
-            <section class="calculator-card">
+            <div class="calculator-card">
                 <h2>BMI Calculator</h2>
                 <p>Calculate your Body Mass Index</p>
                 
                 <form id="bmi-form">
                     <div class="form-group">
-                        <label for="weight">Weight (kg) *</label>
-                        <input type="number" id="weight" name="weight" min="1" step="0.1" required>
+                        <label for="bmi-weight">Weight (kg) *</label>
+                        <input type="number" id="bmi-weight" name="weight" placeholder="70" min="20" max="300" step="0.1" required>
                     </div>
                     
                     <div class="form-group">
-                        <label for="height">Height (cm) *</label>
-                        <input type="number" id="height" name="height" min="1" step="0.1" required>
+                        <label for="bmi-height">Height (cm) *</label>
+                        <input type="number" id="bmi-height" name="height" placeholder="175" min="50" max="250" step="0.1" required>
                     </div>
                     
                     <button type="submit" class="btn-primary">Calculate BMI</button>
                 </form>
-                
-                <div class="result" id="bmi-result">
-             
-                </div>
-                
+
                 <div class="help-text">
-                    <h4>BMI Categories:</h4>
-                    <ul>
-                        <li>Below 18.5: Underweight</li>
-                        <li>18.5 - 24.9: Normal weight</li>
-                        <li>25.0 - 29.9: Overweight</li>
-                        <li>30.0 and above: Obese</li>
-                    </ul>
+                    <strong>About BMI:</strong><br>
+                    Body Mass Index is a measure of body fat based on height and weight. 
+                    It's a useful screening tool but doesn't directly measure body fat percentage.
                 </div>
-            </section>
+            </div>
 
             <!-- 1RM Calculator -->
-            <section class="calculator-card">
+            <div class="calculator-card">
                 <h2>1RM Calculator</h2>
-                <p>Calculate your estimated one-rep max</p>
+                <p>Estimate your One Rep Max</p>
                 
-                <form id="oneRM-form">
+                <form id="orm-form">
                     <div class="form-group">
-                        <label for="lift-weight">Weight Lifted (kg) *</label>
-                        <input type="number" id="lift-weight" name="lift-weight" min="1" step="0.5" required>
+                        <label for="orm-weight">Weight (kg) *</label>
+                        <input type="number" id="orm-weight" name="weight" placeholder="80" min="1" max="500" step="0.5" required>
                     </div>
                     
                     <div class="form-group">
-                        <label for="reps">Reps Performed *</label>
-                        <input type="number" id="reps" name="reps" min="1" max="10" required>
+                        <label for="orm-reps">Reps Performed *</label>
+                        <input type="number" id="orm-reps" name="reps" placeholder="10" min="1" max="10" required>
                     </div>
                     
                     <button type="submit" class="btn-primary">Calculate 1RM</button>
                 </form>
-                
-                <div class="result" id="oneRM-result">
-             
-                </div>
-                
+
                 <div class="help-text">
-                    <h4>How to use:</h4>
-                    <ul>
-                        <li>Pick a weight you can lift for 1-10 reps</li>
-                        <li>1RM = the maximum weight you can lift once</li>
-                        <li>Uses the Epley formula for estimation</li>
-                        <li>Most accurate with 3-7 reps</li>
-                    </ul>
+                    <strong>About 1RM:</strong><br>
+                    One Rep Max is the maximum weight you can lift for a single repetition. 
+                    This calculator uses the Epley formula to estimate your 1RM based on submaximal lifts.
+                    <br><br>
+                    <strong>Note:</strong> Use 1-10 reps for best accuracy. The closer to 1 rep, the more accurate the estimate.
                 </div>
-            </section>
-        </div>
+            </div>
+        </section>
     </main>
 
     <!-- Footer -->
     <footer>
         <p>&copy; 2026 FitTrack | Developed by Marcus Machado | Your data stays on your device</p>
     </footer>
+
+    <!-- JavaScript -->
     <script src="assets/js/storage.js"></script>
     <script src="assets/js/utils.js"></script>
     <script src="assets/js/validation.js"></script>
     <script src="assets/js/notifications.js"></script>
     <script src="assets/js/workout.js"></script>
-    <script src="assets/js/dashboard.js"></script>
+    <script src="assets/js/calculators.js"></script>
     <script src="assets/js/main.js"></script>
 </body>
 </html>
