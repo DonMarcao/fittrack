@@ -51,7 +51,7 @@ const App = {
      * Setup global event listeners
      */
     setupEventListeners() {
-        // Theme toggle (if button exists)
+        // Theme toggle button
         const themeToggle = document.getElementById('theme-toggle');
         if (themeToggle) {
             themeToggle.addEventListener('click', () => this.toggleTheme());
@@ -66,14 +66,21 @@ const App = {
     },
 
     /**
-     * Toggle theme
+     * Toggle theme (light/dark)
      */
     toggleTheme() {
-        const current = document.documentElement.getAttribute('data-theme');
-        const newTheme = current === 'dark' ? 'light' : 'dark';
+        const html = document.documentElement;
+        const currentTheme = html.getAttribute('data-theme') || 'light';
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
         
-        document.documentElement.setAttribute('data-theme', newTheme);
+        html.setAttribute('data-theme', newTheme);
         FitTrackStorage.saveTheme(newTheme);
+        
+        // Update toggle button text
+        const themeToggle = document.getElementById('theme-toggle');
+        if (themeToggle) {
+            themeToggle.textContent = newTheme === 'light' ? '🌙' : '☀️';
+        }
         
         console.log('Theme changed to:', newTheme);
     },
