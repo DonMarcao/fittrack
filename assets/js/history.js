@@ -220,4 +220,29 @@ const WorkoutHistory = {
     editWorkout(id) {
         // Reuse Dashboard edit modal
         if (window.Dashboard && Dashboard.editWorkout) {
-            Dashboard.ed
+            Dashboard.editWorkout(id);
+        } else {
+            Notifications.error('Dashboard module not loaded');
+        }
+    },
+
+    /**
+     * Delete workout
+     * @param {string} id - Workout ID
+     */
+    deleteWorkout(id) {
+        Workout.deleteWithConfirmation(id);
+    }
+};
+
+// Initialize history page if on history page
+document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => {
+        if (window.App && App.currentPage === 'history') {
+            WorkoutHistory.init();
+        }
+    }, 100);
+});
+
+// Make available globally
+window.WorkoutHistory = WorkoutHistory;

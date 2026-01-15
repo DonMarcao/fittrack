@@ -3,9 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Visualize your fitness progress with interactive charts showing weight progression over time">
-    <title>Progress Charts - FitTrack</title>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script> -->
+    <title>FitTrack - Progress Charts</title>
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -25,47 +23,65 @@
     </header>
 
     <!-- Main Content -->
-    <main>
-        <h1>Progress Charts</h1>
+    <main class="container">
+        <div class="page-header">
+            <h1>Progress Charts</h1>
+            <p>Visualize your fitness journey</p>
+        </div>
 
-        <!-- Chart Controls -->
-        <section class="chart-controls">
-            <label for="exercise-select">Select Exercise:</label>
+        <!-- Chart Filters -->
+        <section class="chart-filters">
             <select id="exercise-select">
-                <option value="">Choose an exercise...</option>
-            
+                <option value="">Select Exercise</option>
+                <!-- Will be populated by JavaScript -->
+            </select>
+            <select id="time-range">
+                <option value="week">Last 7 Days</option>
+                <option value="month">Last 30 Days</option>
+                <option value="year">Last Year</option>
+                <option value="all">All Time</option>
             </select>
         </section>
 
-        <!-- Chart Container -->
-        <section class="chart-container">
-            <canvas id="progress-chart"></canvas>
-            
-            
-            <div class="empty-state">
-                <p>No workout data yet. Add workouts to see your progress!</p>
-                <a href="index.html" class="btn-primary">Go to Dashboard</a>
+        <!-- Charts Grid -->
+        <section class="charts-grid">
+            <!-- Volume Over Time Chart -->
+            <div class="chart-card">
+                <h2>Volume Over Time</h2>
+                <div class="chart-container">
+                    <canvas id="volume-chart"></canvas>
+                </div>
+            </div>
+
+            <!-- Weight Progress Chart -->
+            <div class="chart-card">
+                <h2>Weight Progress</h2>
+                <div class="chart-container">
+                    <canvas id="weight-chart"></canvas>
+                </div>
+            </div>
+
+            <!-- Sets & Reps Chart -->
+            <div class="chart-card">
+                <h2>Sets & Reps Distribution</h2>
+                <div class="chart-container">
+                    <canvas id="sets-reps-chart"></canvas>
+                </div>
+            </div>
+
+            <!-- Exercise Breakdown Chart -->
+            <div class="chart-card">
+                <h2>Exercise Breakdown</h2>
+                <div class="chart-container">
+                    <canvas id="exercise-chart"></canvas>
+                </div>
             </div>
         </section>
 
-        <!-- Stats Summary -->
-        <section class="stats-summary">
-            <div class="stat-card">
-                <h3>Current Weight</h3>
-                <p class="stat-value">--</p>
-            </div>
-            <div class="stat-card">
-                <h3>Starting Weight</h3>
-                <p class="stat-value">--</p>
-            </div>
-            <div class="stat-card">
-                <h3>Progress</h3>
-                <p class="stat-value">--</p>
-            </div>
-            <div class="stat-card">
-                <h3>Personal Best</h3>
-                <p class="stat-value">--</p>
-            </div>
+        <!-- Empty State (hidden when charts load) -->
+        <section class="empty-state" id="charts-empty-state">
+            <p>No workout data available. Start tracking to see your progress!</p>
+            <a href="index.html" class="btn-primary">Add Your First Workout</a>
         </section>
     </main>
 
@@ -73,12 +89,17 @@
     <footer>
         <p>&copy; 2026 FitTrack | Developed by Marcus Machado | Your data stays on your device</p>
     </footer>
+
+    <!-- Chart.js Library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    
+    <!-- JavaScript -->
     <script src="assets/js/storage.js"></script>
     <script src="assets/js/utils.js"></script>
     <script src="assets/js/validation.js"></script>
     <script src="assets/js/notifications.js"></script>
     <script src="assets/js/workout.js"></script>
-    <script src="assets/js/dashboard.js"></script>
+    <script src="assets/js/charts.js"></script>
     <script src="assets/js/main.js"></script>
 </body>
 </html>
