@@ -1,63 +1,70 @@
 /**
- * Main Application
- * Initializes the app and handles core functionality
+ * Main Application Module
+ * Handles global app initialization and utilities
  */
 
 const App = {
-    // Current page
     currentPage: '',
 
     /**
-     * Initialize the application
+     * Initialize application
      */
     init() {
+        console.log('FitTrack initialized');
+        
         this.detectPage();
         this.loadTheme();
         this.setupEventListeners();
         this.displayCurrentDate();
-        
-        console.log('FitTrack initialized');
     },
 
     /**
-     * Detect which page we're on
+     * Detect current page
      */
     detectPage() {
         const path = window.location.pathname;
-        const page = path.split('/').pop() || 'index.html';
-        
-        if (page === 'index.html' || page === '') {
+        const filename = path.substring(path.lastIndexOf('/') + 1);
+
+        if (filename === '' || filename === 'index.html') {
             this.currentPage = 'dashboard';
-        } else if (page === 'history.html') {
+        } else if (filename === 'history.html') {
             this.currentPage = 'history';
-        } else if (page === 'charts.html') {
+        } else if (filename === 'charts.html') {
             this.currentPage = 'charts';
-        } else if (page === 'calculators.html') {
+        } else if (filename === 'calculators.html') {
             this.currentPage = 'calculators';
         }
-        
+
         console.log('Current page:', this.currentPage);
     },
 
     /**
-     * Load and apply theme
+     * Load saved theme
      */
     loadTheme() {
-        const theme = FitTrackStorage.getTheme();
+        const savedTheme = FitTrackStorage.getTheme();
+        const theme = savedTheme || 'light';
+        
         document.documentElement.setAttribute('data-theme', theme);
+        
+        // Update toggle button if exists
+        const themeToggle = document.getElementById('theme-toggle');
+        if (themeToggle) {
+            themeToggle.textContent = theme === 'light' ? '🌙' : '☀️';
+        }
     },
 
     /**
      * Setup global event listeners
      */
     setupEventListeners() {
-        // Theme toggle button
+        // Theme toggle
         const themeToggle = document.getElementById('theme-toggle');
         if (themeToggle) {
             themeToggle.addEventListener('click', () => this.toggleTheme());
         }
 
-        // Handle escape key for modals
+        // Close modals on ESC key
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 this.closeAllModals();
@@ -86,7 +93,7 @@ const App = {
     },
 
     /**
-     * Display current date in date inputs
+     * Display current date in forms
      */
     displayCurrentDate() {
         const dateInputs = document.querySelectorAll('input[type="date"]');
@@ -95,6 +102,7 @@ const App = {
         dateInputs.forEach(input => {
             if (!input.value) {
                 input.value = today;
+                input.max = today; // Prevent future dates
             }
         });
     },
@@ -106,6 +114,7 @@ const App = {
         const modals = document.querySelectorAll('.modal-overlay');
         modals.forEach(modal => {
             modal.classList.add('closing');
+            document.body.classList.remove('modal-open');
             setTimeout(() => {
                 modal.remove();
             }, 300);
@@ -113,37 +122,44 @@ const App = {
     },
 
     /**
-     * Show loading state
-     * @param {HTMLElement} element - Element to show loading on
+     * Show loading indicator
      */
-    showLoading(element) {
-        if (element) {
-            element.classList.add('loading');
-            element.disabled = true;
+    showLoading() {
+        let loader = document.getElementById('global-loader');
+        
+        if (!loader) {
+            loader = document.createElement('div');
+            loader.id = 'global-loader';
+            loader.className = 'global-loader';
+            loader.innerHTML = `
+                <div class="loader-spinner"></div>
+                <p>Loading...</p>
+            `;
+            document.body.appendChild(loader);
+        }
+        
+        loader.classList.add('show');
+    },
+
+    /**
+     * Hide loading indicator
+     */
+    hideLoading() {
+        const loader = document.getElementById('global-loader');
+        if (loader) {
+            loader.classList.remove('show');
         }
     },
 
     /**
-     * Hide loading state
-     * @param {HTMLElement} element - Element to hide loading on
-     */
-    hideLoading(element) {
-        if (element) {
-            element.classList.remove('loading');
-            element.disabled = false;
-        }
-    },
-
-    /**
-     * Get all workouts
-     * @returns {Array} Workouts
+     * Get all workouts (shortcut)
      */
     getWorkouts() {
-        return e.getWorkouts();
+        return Workout.getAllWorkouts();
     },
 
     /**
-     * Refresh the current page display
+     * Refresh current page
      */
     refresh() {
         switch (this.currentPage) {
