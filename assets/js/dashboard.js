@@ -223,11 +223,7 @@ const Dashboard = {
         const deleteBtn = card.querySelector('[data-action="delete"]');
 
         editBtn.addEventListener('click', () => this.editWorkout(workout.id));
-        deleteBtn.addEventListener('click', () => {
-            Workout.deleteWithConfirmation(workout.id);
-            // Refresh after short delay (wait for user confirmation)
-            setTimeout(() => this.render(), 500);
-        });
+        deleteBtn.addEventListener('click', () => Workout.deleteWithConfirmation(workout.id));
 
         return card;
     },
@@ -252,27 +248,37 @@ const Dashboard = {
                     <form id="add-workout-form">
                         <div class="form-group">
                             <label for="add-exercise">Exercise Name *</label>
-                            <input type="text" id="add-exercise" name="exercise" placeholder="e.g., Bench Press" required>
+                            <input type="text" id="add-exercise" name="exercise" 
+                                   placeholder="e.g., Bench Press, Squat, Deadlift" 
+                                   autocomplete="off" required>
+                            <small style="color: var(--text-muted); font-size: 0.75rem;">2-50 characters</small>
                         </div>
 
                         <div class="form-group">
                             <label for="add-date">Date *</label>
                             <input type="date" id="add-date" name="date" required>
+                            <small style="color: var(--text-muted); font-size: 0.75rem;">Cannot be in the future</small>
                         </div>
 
                         <div class="form-group">
                             <label for="add-sets">Sets *</label>
-                            <input type="number" id="add-sets" name="sets" placeholder="3" min="1" max="20" required>
+                            <input type="number" id="add-sets" name="sets" 
+                                   placeholder="3" min="1" max="20" required>
+                            <small style="color: var(--text-muted); font-size: 0.75rem;">1-20 sets</small>
                         </div>
 
                         <div class="form-group">
                             <label for="add-reps">Reps *</label>
-                            <input type="number" id="add-reps" name="reps" placeholder="10" min="1" max="100" required>
+                            <input type="number" id="add-reps" name="reps" 
+                                   placeholder="10" min="1" max="100" required>
+                            <small style="color: var(--text-muted); font-size: 0.75rem;">1-100 reps</small>
                         </div>
 
                         <div class="form-group">
                             <label for="add-weight">Weight (kg) *</label>
-                            <input type="number" id="add-weight" name="weight" placeholder="80" min="0.5" max="500" step="0.5" required>
+                            <input type="number" id="add-weight" name="weight" 
+                                   placeholder="80" min="0.5" max="500" step="0.5" required>
+                            <small style="color: var(--text-muted); font-size: 0.75rem;">0.5-500 kg</small>
                         </div>
                     </form>
                 </div>
@@ -290,11 +296,24 @@ const Dashboard = {
         // Set today's date
         const dateInput = overlay.querySelector('#add-date');
         dateInput.value = Utils.getTodayDate();
+        dateInput.max = Utils.getTodayDate(); // Prevent future dates
 
         // Setup event listeners
         const form = overlay.querySelector('#add-workout-form');
         const closeButtons = overlay.querySelectorAll('[data-action="close"]');
         const saveButton = overlay.querySelector('[data-action="save"]');
+
+        // Real-time validation feedback
+        const exerciseInput = overlay.querySelector('#add-exercise');
+        exerciseInput.addEventListener('input', (e) => {
+            if (e.target.value.length > 0 && e.target.value.length < 2) {
+                e.target.style.borderColor = '#f59e0b';
+            } else if (e.target.value.length >= 2) {
+                e.target.style.borderColor = '#22c55e';
+            } else {
+                e.target.style.borderColor = '';
+            }
+        });
 
         // Close modal
         closeButtons.forEach(btn => {
@@ -314,7 +333,6 @@ const Dashboard = {
             
             if (success) {
                 this.closeModal('add-workout-modal');
-                this.render();
             }
         });
 
@@ -438,7 +456,6 @@ const Dashboard = {
             
             if (success) {
                 this.closeModal('edit-workout-modal');
-                this.render();
             }
         });
 
