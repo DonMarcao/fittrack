@@ -5,60 +5,87 @@
 
 const Validation = {
     /**
-     * Validate workout form
-     * @param {Object} data - Form data to validate
-     * @returns {Object} { isValid: boolean, errors: {} }
+     * Validate workout data
+     * @param {Object} workout - Workout object
+     * @returns {Object} Validation result {isValid: boolean, errors: {}}
      */
-    validateWorkout(data) {
+    validateWorkout(workout) {
         const errors = {};
 
-        // Validate exercise name
-        if (!Utils.isRequired(data.exercise)) {
+        // Exercise name
+        if (!workout.exercise || workout.exercise.trim().length === 0) {
             errors.exercise = 'Exercise name is required';
-        } else if (data.exercise.length < 2) {
+        } else if (workout.exercise.trim().length < 2) {
             errors.exercise = 'Exercise name must be at least 2 characters';
-        } else if (data.exercise.length > 50) {
+        } else if (workout.exercise.trim().length > 50) {
             errors.exercise = 'Exercise name must be less than 50 characters';
+        } else if (!/^[a-zA-Z0-9\s\-']+$/.test(workout.exercise)) {
+            errors.exercise = 'Exercise name can only contain letters, numbers, spaces, hyphens and apostrophes';
         }
 
-        // Validate date
-        if (!Utils.isRequired(data.date)) {
+        // Date
+        if (!workout.date) {
             errors.date = 'Date is required';
         } else {
-            const workoutDate = new Date(data.date);
+            const workoutDate = new Date(workout.date);
             const today = new Date();
-            today.setHours(23, 59, 59, 999); // End of today
+            today.setHours(23, 59, 59, 999);
             
-            if (workoutDate > today) {
+            if (isNaN(workoutDate.getTime())) {
+                errors.date = 'Invalid date format';
+            } else if (workoutDate > today) {
                 errors.date = 'Date cannot be in the future';
+            } else {
+                // Check if date is too old (more than 10 years ago)
+                const tenYearsAgo = new Date();
+                tenYearsAgo.setFullYear(tenYearsAgo.getFullYear() - 10);
+                
+                if (workoutDate < tenYearsAgo) {
+                    errors.date = 'Date seems too old. Please check.';
+                }
             }
         }
 
-        // Validate sets
-        if (!Utils.isRequired(data.sets)) {
+        // Sets
+        const sets = parseInt(workout.sets);
+        if (!workout.sets || workout.sets === '') {
             errors.sets = 'Sets is required';
-        } else if (!Utils.isValidNumber(data.sets)) {
-            errors.sets = 'Sets must be a positive number';
-        } else if (data.sets < 1 || data.sets > 20) {
-            errors.sets = 'Sets must be between 1 and 20';
+        } else if (isNaN(sets)) {
+            errors.sets = 'Sets must be a number';
+        } else if (sets < 1) {
+            errors.sets = 'Sets must be at least 1';
+        } else if (sets > 20) {
+            errors.sets = 'Sets must be 20 or less';
+        } else if (!Number.isInteger(sets)) {
+            errors.sets = 'Sets must be a whole number';
         }
 
-        // Validate reps
-        if (!Utils.isRequired(data.reps)) {
+        // Reps
+        const reps = parseInt(workout.reps);
+        if (!workout.reps || workout.reps === '') {
             errors.reps = 'Reps is required';
-        } else if (!Utils.isValidNumber(data.reps)) {
-            errors.reps = 'Reps must be a positive number';
-        } else if (data.reps < 1 || data.reps > 100) {
-            errors.reps = 'Reps must be between 1 and 100';
+        } else if (isNaN(reps)) {
+            errors.reps = 'Reps must be a number';
+        } else if (reps < 1) {
+            errors.reps = 'Reps must be at least 1';
+        } else if (reps > 100) {
+            errors.reps = 'Reps must be 100 or less';
+        } else if (!Number.isInteger(reps)) {
+            errors.reps = 'Reps must be a whole number';
         }
 
-        // Validate weight
-        if (!Utils.isRequired(data.weight)) {
+        // Weight
+        const weight = parseFloat(workout.weight);
+        if (!workout.weight || workout.weight === '') {
             errors.weight = 'Weight is required';
-        } else if (!Utils.isValidNumber(data.weight)) {
-            errors.weight = 'Weight must be a positive number';
-        } else if (data.weight < 0.5 || data.weight > 500) {
-            errors.weight = 'Weight must be between 0.5 and 500 kg';
+        } else if (isNaN(weight)) {
+            errors.weight = 'Weight must be a number';
+        } else if (weight < 0.5) {
+            errors.weight = 'Weight must be at least 0.5kg';
+        } else if (weight > 500) {
+            errors.weight = 'Weight must be 500kg or less';
+        } else if (weight % 0.5 !== 0) {
+            errors.weight = 'Weight must be in 0.5kg increments';
         }
 
         return {
@@ -68,29 +95,35 @@ const Validation = {
     },
 
     /**
-     * Validate BMI calculator inputs
-     * @param {Object} data - BMI data
-     * @returns {Object} { isValid: boolean, errors: {} }
+     * Validate BMI data
+     * @param {Object} data - BMI data {weight, height}
+     * @returns {Object} Validation result
      */
     validateBMI(data) {
         const errors = {};
 
-        // Validate weight
-        if (!Utils.isRequired(data.weight)) {
+        // Weight
+        const weight = parseFloat(data.weight);
+        if (!data.weight || data.weight === '') {
             errors.weight = 'Weight is required';
-        } else if (!Utils.isValidNumber(data.weight)) {
-            errors.weight = 'Weight must be a positive number';
-        } else if (data.weight < 20 || data.weight > 300) {
-            errors.weight = 'Weight must be between 20 and 300 kg';
+        } else if (isNaN(weight)) {
+            errors.weight = 'Weight must be a number';
+        } else if (weight < 20) {
+            errors.weight = 'Weight must be at least 20kg';
+        } else if (weight > 300) {
+            errors.weight = 'Weight must be 300kg or less';
         }
 
-        // Validate height
-        if (!Utils.isRequired(data.height)) {
+        // Height
+        const height = parseFloat(data.height);
+        if (!data.height || data.height === '') {
             errors.height = 'Height is required';
-        } else if (!Utils.isValidNumber(data.height)) {
-            errors.height = 'Height must be a positive number';
-        } else if (data.height < 50 || data.height > 250) {
-            errors.height = 'Height must be between 50 and 250 cm';
+        } else if (isNaN(height)) {
+            errors.height = 'Height must be a number';
+        } else if (height < 50) {
+            errors.height = 'Height must be at least 50cm';
+        } else if (height > 250) {
+            errors.height = 'Height must be 250cm or less';
         }
 
         return {
@@ -100,29 +133,37 @@ const Validation = {
     },
 
     /**
-     * Validate 1RM calculator inputs
-     * @param {Object} data - 1RM data
-     * @returns {Object} { isValid: boolean, errors: {} }
+     * Validate 1RM data
+     * @param {Object} data - 1RM data {weight, reps}
+     * @returns {Object} Validation result
      */
     validate1RM(data) {
         const errors = {};
 
-        // Validate weight
-        if (!Utils.isRequired(data.weight)) {
+        // Weight
+        const weight = parseFloat(data.weight);
+        if (!data.weight || data.weight === '') {
             errors.weight = 'Weight is required';
-        } else if (!Utils.isValidNumber(data.weight)) {
-            errors.weight = 'Weight must be a positive number';
-        } else if (data.weight < 1 || data.weight > 500) {
-            errors.weight = 'Weight must be between 1 and 500 kg';
+        } else if (isNaN(weight)) {
+            errors.weight = 'Weight must be a number';
+        } else if (weight < 1) {
+            errors.weight = 'Weight must be at least 1kg';
+        } else if (weight > 500) {
+            errors.weight = 'Weight must be 500kg or less';
         }
 
-        // Validate reps
-        if (!Utils.isRequired(data.reps)) {
+        // Reps
+        const reps = parseInt(data.reps);
+        if (!data.reps || data.reps === '') {
             errors.reps = 'Reps is required';
-        } else if (!Utils.isValidNumber(data.reps)) {
-            errors.reps = 'Reps must be a positive number';
-        } else if (data.reps < 1 || data.reps > 10) {
-            errors.reps = 'Reps must be between 1 and 10 for accurate 1RM calculation';
+        } else if (isNaN(reps)) {
+            errors.reps = 'Reps must be a number';
+        } else if (reps < 1) {
+            errors.reps = 'Reps must be at least 1';
+        } else if (reps > 10) {
+            errors.reps = 'Reps must be 10 or less (for accurate 1RM estimation)';
+        } else if (!Number.isInteger(reps)) {
+            errors.reps = 'Reps must be a whole number';
         }
 
         return {
@@ -132,71 +173,75 @@ const Validation = {
     },
 
     /**
-     * Show error message on form field
-     * @param {string} fieldName - Name of the field
-     * @param {string} message - Error message
+     * Show validation errors in form
+     * @param {string} formId - Form ID
+     * @param {Object} errors - Errors object
      */
-    showError(fieldName, message) {
-        const field = document.querySelector(`[name="${fieldName}"], #${fieldName}`);
-        
-        if (!field) return;
+    showErrors(formId, errors) {
+        // Clear previous errors first
+        this.clearFormErrors(formId);
 
-        // Add error class to field
-        field.classList.add('error');
+        Object.keys(errors).forEach(field => {
+            const input = document.querySelector(`#${formId} [name="${field}"]`);
+            
+            if (input) {
+                // Add error class to input
+                input.classList.add('error');
+                
+                // Create error message element
+                const errorMsg = document.createElement('span');
+                errorMsg.className = 'error-message';
+                errorMsg.textContent = errors[field];
+                
+                // Insert after input
+                input.parentNode.insertBefore(errorMsg, input.nextSibling);
+                
+                // Add shake animation
+                input.style.animation = 'shake 0.3s';
+                setTimeout(() => {
+                    input.style.animation = '';
+                }, 300);
+            }
+        });
 
-        // Remove any existing error message
-        this.clearError(fieldName);
-
-        // Create error message element
-        const errorDiv = document.createElement('div');
-        errorDiv.className = 'error-message';
-        errorDiv.id = `${fieldName}-error`;
-        errorDiv.textContent = message;
-
-        // Insert error message after field
-        field.parentNode.insertBefore(errorDiv, field.nextSibling);
-    },
-
-    /**
-     * Clear error message from field
-     * @param {string} fieldName - Name of the field
-     */
-    clearError(fieldName) {
-        const field = document.querySelector(`[name="${fieldName}"], #${fieldName}`);
-        
-        if (field) {
-            field.classList.remove('error');
-        }
-
-        const errorMsg = document.getElementById(`${fieldName}-error`);
-        if (errorMsg) {
-            errorMsg.remove();
+        // Show toast notification
+        if (window.Notifications) {
+            const firstError = Object.values(errors)[0];
+            Notifications.error(firstError);
         }
     },
 
     /**
-     * Clear all errors from form
-     * @param {HTMLFormElement} form - Form element
+     * Clear validation errors from specific form
+     * @param {string} formId - Form ID
      */
-    clearAllErrors(form) {
+    clearFormErrors(formId) {
+        const form = document.getElementById(formId);
         if (!form) return;
 
         // Remove error classes
-        const errorFields = form.querySelectorAll('.error');
-        errorFields.forEach(field => field.classList.remove('error'));
+        form.querySelectorAll('.error').forEach(el => {
+            el.classList.remove('error');
+        });
 
         // Remove error messages
-        const errorMessages = form.querySelectorAll('.error-message');
-        errorMessages.forEach(msg => msg.remove());
+        form.querySelectorAll('.error-message').forEach(el => {
+            el.remove();
+        });
     },
 
     /**
-     * Show all validation errors on form
-     * @param {Object} errors - Errors object
+     * Clear all validation errors
      */
-    showErrors(errors) {
-        Object.keys(errors).forEach(fieldName => {
-            this.showError(fieldName, errors[fieldName]);
+    clearAllErrors() {
+        // Remove all error classes
+        document.querySelectorAll('.error').forEach(el => {
+            el.classList.remove('error');
+        });
+
+        // Remove all error messages
+        document.querySelectorAll('.error-message').forEach(el => {
+            el.remove();
         });
     }
 };
