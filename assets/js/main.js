@@ -64,10 +64,40 @@ const App = {
             themeToggle.addEventListener('click', () => this.toggleTheme());
         }
 
-        // Close modals on ESC key
+        // Keyboard shortcuts
         document.addEventListener('keydown', (e) => {
+            // ESC - Close modals
             if (e.key === 'Escape') {
                 this.closeAllModals();
+            }
+            
+            // Ctrl/Cmd + K - Quick add workout
+            if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                e.preventDefault();
+                if (this.currentPage === 'dashboard' || this.currentPage === 'history') {
+                    const addBtn = document.getElementById('add-workout-btn') || 
+                                   document.querySelector('.btn-primary');
+                    if (addBtn && addBtn.textContent.includes('Add')) {
+                        addBtn.click();
+                    }
+                }
+            }
+            
+            // Ctrl/Cmd + E - Export CSV
+            if ((e.ctrlKey || e.metaKey) && e.key === 'e') {
+                e.preventDefault();
+                if (this.currentPage === 'dashboard' || this.currentPage === 'history') {
+                    const exportBtn = document.getElementById('export-btn');
+                    if (exportBtn) {
+                        exportBtn.click();
+                    }
+                }
+            }
+            
+            // Ctrl/Cmd + / - Show shortcuts help
+            if ((e.ctrlKey || e.metaKey) && e.key === '/') {
+                e.preventDefault();
+                this.showKeyboardShortcuts();
             }
         });
     },
@@ -179,6 +209,77 @@ const App = {
                 }
                 break;
         }
+    },
+
+    /**
+     * Show keyboard shortcuts help modal
+     */
+    showKeyboardShortcuts() {
+        // Check if modal already exists
+        if (document.getElementById('shortcuts-modal')) {
+            return;
+        }
+
+        const modal = document.createElement('div');
+        modal.className = 'modal-overlay';
+        modal.id = 'shortcuts-modal';
+        modal.innerHTML = `
+            <div class="modal">
+                <div class="modal-header">
+                    <h2 class="modal-title">⌨️ Keyboard Shortcuts</h2>
+                    <button class="modal-close" data-action="close">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div style="display: grid; gap: 1rem;">
+                        <div style="display: flex; justify-content: space-between; padding: 0.5rem; background: var(--background-hover); border-radius: 4px;">
+                            <span><strong>Ctrl/Cmd + K</strong></span>
+                            <span>Quick add workout</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; padding: 0.5rem; background: var(--background-hover); border-radius: 4px;">
+                            <span><strong>Ctrl/Cmd + E</strong></span>
+                            <span>Export CSV</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; padding: 0.5rem; background: var(--background-hover); border-radius: 4px;">
+                            <span><strong>Ctrl/Cmd + /</strong></span>
+                            <span>Show shortcuts</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; padding: 0.5rem; background: var(--background-hover); border-radius: 4px;">
+                            <span><strong>ESC</strong></span>
+                            <span>Close modal</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; padding: 0.5rem; background: var(--background-hover); border-radius: 4px;">
+                            <span><strong>Enter</strong></span>
+                            <span>Submit form (in modal)</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn-primary" data-action="close">Got it!</button>
+                </div>
+            </div>
+        `;
+
+        document.body.appendChild(modal);
+        document.body.classList.add('modal-open');
+
+        // Setup close buttons
+        const closeButtons = modal.querySelectorAll('[data-action="close"]');
+        closeButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                modal.classList.add('closing');
+                document.body.classList.remove('modal-open');
+                setTimeout(() => modal.remove(), 300);
+            });
+        });
+
+        // Close on click outside
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.add('closing');
+                document.body.classList.remove('modal-open');
+                setTimeout(() => modal.remove(), 300);
+            }
+        });
     }
 };
 
