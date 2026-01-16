@@ -53,6 +53,7 @@ const Dashboard = {
      * Render dashboard
      */
     render() {
+        this.renderStart = performance.now();
         this.displayStats();
         this.displayRecentWorkouts();
     },
@@ -92,6 +93,15 @@ const Dashboard = {
         if (streakElement) {
             const streak = this.calculateStreak(workouts);
             streakElement.textContent = streak;
+        }
+
+        // Performance stats (dev info)
+        if (console.log) {
+            console.log('📊 Performance Stats:', {
+                'Total Workouts': workouts.length,
+                'localStorage Size': Utils.getLocalStorageSize() + ' MB',
+                'Render Time': (performance.now() - (this.renderStart || 0)).toFixed(2) + 'ms'
+            });
         }
     },
 

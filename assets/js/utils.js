@@ -1,71 +1,70 @@
 /**
- * Utils Module
+ * Utility Functions Module
  * Helper functions used across the application
  */
 
 const Utils = {
     /**
-     * Generate unique ID
+     * Generate unique ID based on timestamp
      * @returns {string} Unique ID
      */
     generateId() {
-        return Date.now().toString(36) + Math.random().toString(36).substr(2);
+        return `${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
     },
 
     /**
      * Format date to readable string
-     * @param {string|Date} date - Date to format
-     * @returns {string} Formatted date (e.g., "Jan 12, 2026")
+     * @param {string} dateString - ISO date string
+     * @returns {string} Formatted date (e.g., "Jan 15, 2026")
      */
-    formatDate(date) {
-        const d = new Date(date);
-        const options = { year: 'numeric', month: 'short', day: 'numeric' };
-        return d.toLocaleDateString('en-US', options);
+    formatDate(dateString) {
+        const date = new Date(dateString);
+        return date.toLocaleDateString('en-US', {
+            month: 'short',
+            day: 'numeric',
+            year: 'numeric'
+        });
     },
 
     /**
-     * Format date to input value (YYYY-MM-DD)
-     * @param {string|Date} date - Date to format
-     * @returns {string} Formatted date for input
+     * Format date for input[type="date"]
+     * @param {string} dateString - ISO date string
+     * @returns {string} Formatted date (YYYY-MM-DD)
      */
-    formatDateForInput(date) {
-        const d = new Date(date);
-        const year = d.getFullYear();
-        const month = String(d.getMonth() + 1).padStart(2, '0');
-        const day = String(d.getDate()).padStart(2, '0');
-        return `${year}-${month}-${day}`;
+    formatDateForInput(dateString) {
+        const date = new Date(dateString);
+        return date.toISOString().split('T')[0];
     },
 
     /**
-     * Get today's date as YYYY-MM-DD
+     * Get today's date in YYYY-MM-DD format
      * @returns {string} Today's date
      */
     getTodayDate() {
-        return this.formatDateForInput(new Date());
+        return new Date().toISOString().split('T')[0];
     },
 
     /**
-     * Validate number (positive)
-     * @param {number|string} value - Value to validate
-     * @returns {boolean} Is valid
+     * Check if value is a valid number
+     * @param {any} value - Value to check
+     * @returns {boolean} True if valid number
      */
     isValidNumber(value) {
-        const num = parseFloat(value);
-        return !isNaN(num) && num > 0;
+        return !isNaN(parseFloat(value)) && isFinite(value);
     },
 
     /**
-     * Validate required field
-     * @param {string} value - Value to validate
-     * @returns {boolean} Is valid
+     * Check if value is required (not empty)
+     * @param {any} value - Value to check
+     * @returns {boolean} True if not empty
      */
     isRequired(value) {
-        return value !== null && value !== undefined && value.toString().trim() !== '';
+        return value !== null && value !== undefined && value !== '';
     },
 
     /**
-     * Sort workouts by date (newest first)
-     * @param {Array} workouts - Array of workouts
+     * Sort workouts by date (descending - newest first)
+     * @param {Array} workouts - Workouts array
      * @returns {Array} Sorted workouts
      */
     sortByDateDesc(workouts) {
@@ -73,8 +72,8 @@ const Utils = {
     },
 
     /**
-     * Sort workouts by date (oldest first)
-     * @param {Array} workouts - Array of workouts
+     * Sort workouts by date (ascending - oldest first)
+     * @param {Array} workouts - Workouts array
      * @returns {Array} Sorted workouts
      */
     sortByDateAsc(workouts) {
@@ -83,51 +82,55 @@ const Utils = {
 
     /**
      * Filter workouts by exercise name
-     * @param {Array} workouts - Array of workouts
-     * @param {string} query - Search query
+     * @param {Array} workouts - Workouts array
+     * @param {string} searchTerm - Search term
      * @returns {Array} Filtered workouts
      */
-    filterByExercise(workouts, query) {
-        if (!query) return workouts;
-        
-        const lowerQuery = query.toLowerCase();
+    filterByExercise(workouts, searchTerm) {
+        if (!searchTerm) return workouts;
+        const term = searchTerm.toLowerCase();
         return workouts.filter(w => 
-            w.exercise.toLowerCase().includes(lowerQuery)
+            w.exercise.toLowerCase().includes(term)
         );
     },
 
     /**
      * Filter workouts by date range
-     * @param {Array} workouts - Array of workouts
-     * @param {string} range - 'week', 'month', 'year', or 'all'
+     * @param {Array} workouts - Workouts array
+     * @param {string} range - Range type (week, month, year, all)
      * @returns {Array} Filtered workouts
      */
     filterByDateRange(workouts, range) {
         if (range === 'all') return workouts;
-        
+
         const now = new Date();
-        const cutoffDate = new Date();
+        now.setHours(23, 59, 59, 999);
+
+        let startDate;
         
         switch (range) {
             case 'week':
-                cutoffDate.setDate(now.getDate() - 7);
+                startDate = new Date(now);
+                startDate.setDate(startDate.getDate() - 7);
                 break;
             case 'month':
-                cutoffDate.setDate(now.getDate() - 30);
+                startDate = new Date(now);
+                startDate.setDate(startDate.getDate() - 30);
                 break;
             case 'year':
-                cutoffDate.setFullYear(now.getFullYear() - 1);
+                startDate = new Date(now);
+                startDate.setFullYear(startDate.getFullYear() - 1);
                 break;
             default:
                 return workouts;
         }
-        
-        return workouts.filter(w => new Date(w.date) >= cutoffDate);
+
+        return workouts.filter(w => new Date(w.date) >= startDate);
     },
 
     /**
      * Get unique exercises from workouts
-     * @param {Array} workouts - Array of workouts
+     * @param {Array} workouts - Workouts array
      * @returns {Array} Unique exercise names
      */
     getUniqueExercises(workouts) {
@@ -138,39 +141,110 @@ const Utils = {
     /**
      * Calculate total volume (sets × reps × weight)
      * @param {Object} workout - Workout object
-     * @returns {number} Total volume
+     * @returns {number} Total volume in kg
      */
     calculateVolume(workout) {
-        return workout.sets * workout.reps * workout.weight;
+        const sets = parseInt(workout.sets) || 0;
+        const reps = parseInt(workout.reps) || 0;
+        const weight = parseFloat(workout.weight) || 0;
+        return sets * reps * weight;
+    },
+
+    /**
+     * Throttle function - limit execution rate
+     * @param {Function} func - Function to throttle
+     * @param {number} limit - Time limit in ms
+     * @returns {Function} Throttled function
+     */
+    throttle(func, limit) {
+        let inThrottle;
+        return function(...args) {
+            if (!inThrottle) {
+                func.apply(this, args);
+                inThrottle = true;
+                setTimeout(() => inThrottle = false, limit);
+            }
+        };
+    },
+
+    /**
+     * Memoize function results for performance
+     * @param {Function} func - Function to memoize
+     * @returns {Function} Memoized function
+     */
+    memoize(func) {
+        const cache = new Map();
+        return function(...args) {
+            const key = JSON.stringify(args);
+            if (cache.has(key)) {
+                return cache.get(key);
+            }
+            const result = func.apply(this, args);
+            cache.set(key, result);
+            return result;
+        };
     },
 
     /**
      * Sanitize HTML to prevent XSS
-     * @param {string} text - Text to sanitize
-     * @returns {string} Sanitized text
+     * @param {string} str - String to sanitize
+     * @returns {string} Sanitized string
      */
-    sanitizeHTML(text) {
-        const div = document.createElement('div');
-        div.textContent = text;
-        return div.innerHTML;
+    sanitizeHTML(str) {
+        if (!str) return '';
+        
+        const temp = document.createElement('div');
+        temp.textContent = str;
+        return temp.innerHTML
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#039;');
     },
 
     /**
-     * Debounce function
+     * Debounce function - delay execution until after wait time
      * @param {Function} func - Function to debounce
      * @param {number} wait - Wait time in ms
      * @returns {Function} Debounced function
      */
-    debounce(func, wait = 300) {
+    debounce(func, wait) {
         let timeout;
-        return function executedFunction(...args) {
-            const later = () => {
-                clearTimeout(timeout);
-                func(...args);
-            };
+        return function(...args) {
             clearTimeout(timeout);
-            timeout = setTimeout(later, wait);
+            timeout = setTimeout(() => func.apply(this, args), wait);
         };
+    },
+
+    /**
+     * Check if localStorage is available
+     * @returns {boolean} True if localStorage is available
+     */
+    isLocalStorageAvailable() {
+        try {
+            const test = '__localStorage_test__';
+            localStorage.setItem(test, test);
+            localStorage.removeItem(test);
+            return true;
+        } catch (error) {
+            console.error('localStorage is not available:', error);
+            return false;
+        }
+    },
+
+    /**
+     * Get localStorage size in MB
+     * @returns {number} Size in MB
+     */
+    getLocalStorageSize() {
+        let total = 0;
+        for (let key in localStorage) {
+            if (localStorage.hasOwnProperty(key)) {
+                total += localStorage[key].length + key.length;
+            }
+        }
+        return (total / 1024 / 1024).toFixed(2);
     }
 };
 
