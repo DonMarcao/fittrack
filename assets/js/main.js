@@ -12,10 +12,36 @@ const App = {
     init() {
         console.log('FitTrack initialized');
         
+        // Check browser compatibility
+        this.checkBrowserCompatibility();
+        
         this.detectPage();
         this.loadTheme();
         this.setupEventListeners();
         this.displayCurrentDate();
+    },
+
+    /**
+     * Check browser compatibility
+     */
+    checkBrowserCompatibility() {
+        // Check for required features
+        const requiredFeatures = {
+            'localStorage': typeof(Storage) !== 'undefined',
+            'JSON': typeof JSON !== 'undefined',
+            'Promise': typeof Promise !== 'undefined'
+        };
+
+        const missingFeatures = Object.keys(requiredFeatures).filter(
+            feature => !requiredFeatures[feature]
+        );
+
+        if (missingFeatures.length > 0) {
+            console.warn('Browser missing features:', missingFeatures);
+        }
+
+        // Log browser info
+        console.log('Browser:', navigator.userAgent);
     },
 
     /**

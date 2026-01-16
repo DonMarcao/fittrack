@@ -5,8 +5,11 @@
 .btn,
 button.btn {
     display: inline-flex;
+    display: -webkit-inline-flex;
     align-items: center;
+    -webkit-align-items: center;
     justify-content: center;
+    -webkit-justify-content: center;
     padding: var(--space-3) var(--space-5);
     font-size: var(--font-size-base);
     font-weight: var(--font-weight-semibold);
@@ -14,8 +17,12 @@ button.btn {
     border: none;
     cursor: pointer;
     transition: all var(--transition-base);
+    -webkit-transition: all var(--transition-base);
     text-decoration: none;
     font-family: var(--font-primary);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 }
 
 .btn-primary {
@@ -26,6 +33,7 @@ button.btn {
 .btn-primary:hover {
     background-color: var(--primary-dark);
     transform: translateY(-2px);
+    -webkit-transform: translateY(-2px);
     box-shadow: var(--shadow-md);
 }
 
@@ -58,6 +66,11 @@ button.btn {
     font-size: 18px;
     cursor: pointer;
     transition: all var(--transition-base);
+    -webkit-transition: all var(--transition-base);
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
 }
 
 .btn-icon:hover {
@@ -200,6 +213,31 @@ textarea {
     background-color: var(--background-main);
     color: var(--text-primary);
     transition: all var(--transition-base);
+    -webkit-transition: all var(--transition-base);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+/* Date input specific styling */
+input[type="date"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    filter: invert(0.5);
+}
+
+[data-theme="dark"] input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}
+
+/* Number input - remove spinner in Firefox */
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 input:focus,
@@ -328,13 +366,17 @@ nav {
 
 .workout-card {
     display: flex !important;
+    display: -webkit-flex !important;
     justify-content: space-between;
+    -webkit-justify-content: space-between;
     align-items: center;
+    -webkit-align-items: center;
     padding: var(--space-4);
     background-color: var(--background-card);
     border: 1px solid var(--border-color);
     border-radius: var(--radius-md);
     transition: all var(--transition-base);
+    -webkit-transition: all var(--transition-base);
 }
 
 .workout-card:hover {
@@ -344,6 +386,7 @@ nav {
 
 .workout-info {
     flex: 1;
+    -webkit-flex: 1;
 }
 
 .workout-info h4 {
@@ -361,6 +404,7 @@ nav {
 
 .workout-actions {
     display: flex;
+    display: -webkit-flex;
     gap: var(--space-2);
 }
 
