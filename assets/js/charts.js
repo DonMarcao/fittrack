@@ -24,6 +24,16 @@ const Charts = {
         this.setupEventListeners();
         this.populateExerciseSelect();
         this.render();
+        
+        // Handle window resize
+        this.resizeTimeout = null;
+        window.addEventListener('resize', () => {
+            clearTimeout(this.resizeTimeout);
+            this.resizeTimeout = setTimeout(() => {
+                console.log('Window resized, re-rendering charts');
+                this.render();
+            }, 300);
+        });
     },
 
     /**
@@ -156,6 +166,9 @@ const Charts = {
         const labels = workouts.map(w => Utils.formatDate(w.date));
         const data = workouts.map(w => Utils.calculateVolume(w));
 
+        // Check if mobile
+        const isMobile = window.innerWidth < 768;
+
         this.volumeChart = new Chart(ctx, {
             type: 'line',
             data: {
@@ -166,7 +179,9 @@ const Charts = {
                     borderColor: '#22c55e',
                     backgroundColor: 'rgba(34, 197, 94, 0.1)',
                     tension: 0.4,
-                    fill: true
+                    fill: true,
+                    pointRadius: isMobile ? 2 : 3,
+                    pointHoverRadius: isMobile ? 4 : 6
                 }]
             },
             options: {
@@ -174,13 +189,36 @@ const Charts = {
                 maintainAspectRatio: false,
                 plugins: {
                     legend: {
-                        display: false
+                        display: !isMobile
+                    },
+                    tooltip: {
+                        mode: 'index',
+                        intersect: false
                     }
                 },
                 scales: {
+                    x: {
+                        ticks: {
+                            maxRotation: isMobile ? 45 : 0,
+                            minRotation: isMobile ? 45 : 0,
+                            font: {
+                                size: isMobile ? 10 : 12
+                            }
+                        }
+                    },
                     y: {
-                        beginAtZero: true
+                        beginAtZero: true,
+                        ticks: {
+                            font: {
+                                size: isMobile ? 10 : 12
+                            }
+                        }
                     }
+                },
+                interaction: {
+                    mode: 'nearest',
+                    axis: 'x',
+                    intersect: false
                 }
             }
         });
