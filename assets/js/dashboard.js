@@ -35,6 +35,18 @@ const Dashboard = {
         if (exportBtn) {
             exportBtn.addEventListener('click', () => Workout.exportToCSV());
         }
+
+        // Backup button
+        const backupBtn = document.getElementById('backup-btn');
+        if (backupBtn) {
+            backupBtn.addEventListener('click', () => Workout.backupData());
+        }
+
+        // Import button
+        const importBtn = document.getElementById('import-btn');
+        if (importBtn) {
+            importBtn.addEventListener('click', () => Workout.importData());
+        }
     },
 
     /**

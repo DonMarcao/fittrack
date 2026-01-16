@@ -233,6 +233,100 @@ const Workout = {
         window.URL.revokeObjectURL(url);
 
         Notifications.success(`Exported ${workouts.length} workouts to CSV`);
+    },
+
+    /**
+     * Backup all data to JSON file
+     */
+    backupData() {
+        const workouts = this.getAllWorkouts();
+
+        if (workouts.length === 0) {
+            Notifications.warning('No data to backup');
+            return;
+        }
+
+        const backup = {
+            version: '1.0',
+            exportDate: new Date().toISOString(),
+            workoutsCount: workouts.length,
+            workouts: workouts
+        };
+
+        const json = JSON.stringify(backup, null, 2);
+        const blob = new Blob([json], { type: 'application/json' });
+        const url = window.URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = `fittrack-backup-${Utils.getTodayDate()}.json`;
+        
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        window.URL.revokeObjectURL(url);
+
+        Notifications.success(`Backed up ${workouts.length} workouts`);
+    },
+
+    /**
+     * Import data from JSON backup file
+     */
+    importData() {
+        const input = document.createElement('input');
+        input.type = 'file';
+        input.accept = '.json';
+        
+        input.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            
+            reader.onload = (event) => {
+                try {
+                    const backup = JSON.parse(event.target.result);
+                    
+                    // Validate backup structure
+                    if (!backup.workouts || !Array.isArray(backup.workouts)) {
+                        throw new Error('Invalid backup file format');
+                    }
+
+                    // Ask for confirmation
+                    const message = `Import ${backup.workoutsCount} workouts from ${new Date(backup.exportDate).toLocaleDateString()}?\n\nThis will replace all current data!`;
+                    
+                    if (!confirm(message)) {
+                        return;
+                    }
+
+                    // Clear current data
+                    FitTrackStorage.clearAllWorkouts();
+
+                    // Import workouts
+                    backup.workouts.forEach(workout => {
+                        FitTrackStorage.addWorkout(workout);
+                    });
+
+                    Notifications.success(`Imported ${backup.workoutsCount} workouts successfully!`);
+                    
+                    // Refresh page
+                    if (window.App) {
+                        App.refresh();
+                    }
+
+                } catch (error) {
+                    console.error('Import error:', error);
+                    Notifications.error('Failed to import backup file. Please check the file format.');
+                }
+            };
+
+            reader.onerror = () => {
+                Notifications.error('Failed to read backup file');
+            };
+
+            reader.readAsText(file);
+        });
+
+        input.click();
     }
 };
 

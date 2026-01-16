@@ -14,12 +14,11 @@
                 <h1>💪 FitTrack</h1>
             </div>
             <ul class="nav-links">
-                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="index.html" class="active">Dashboard</a></li>
                 <li><a href="history.html">History</a></li>
                 <li><a href="charts.html">Charts</a></li>
                 <li><a href="calculators.html">Calculators</a></li>
             </ul>
-            <button id="theme-toggle" class="btn-icon" title="Toggle theme">🌙</button>
         </nav>
     </header>
 
@@ -57,7 +56,9 @@
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
                 <h2 style="margin: 0;">Recent Workouts</h2>
                 <div style="display: flex; gap: 0.75rem; align-items: center;">
-                    <button id="export-btn" class="btn-secondary btn-small">📥 Export CSV</button>
+                    <button id="backup-btn" class="btn-secondary btn-small" title="Backup all data">💾 Backup</button>
+                    <button id="import-btn" class="btn-secondary btn-small" title="Import backup">📥 Import</button>
+                    <button id="export-btn" class="btn-secondary btn-small" title="Export to CSV">📊 Export CSV</button>
                     <a href="history.html" class="view-all">View All →</a>
                 </div>
             </div>
