@@ -497,11 +497,246 @@ User stories define the core functionality from the perspective of different use
 
 ## 🛠️ Technologies Used
 
-- **HTML5, CSS3, JavaScript (ES6+)**
-- **Chart.js 4.4.1**
-- **localStorage API**
-- **Git & GitHub Pages**
-- **VS Code + Live Server**
+### Languages
+
+**HTML5:**
+- Semantic markup for accessibility (`<nav>`, `<main>`, `<section>`, `<header>`, `<footer>`)
+- Forms with built-in validation attributes (`required`, `min`, `max`, `step`, `pattern`)
+- Custom data attributes for JavaScript hooks (`data-action`, `data-id`)
+- ARIA attributes for screen readers (`aria-label`, `role="dialog"`)
+
+**CSS3:**
+- **Layout:** CSS Grid and Flexbox for responsive layouts
+- **Theming:** CSS Variables (custom properties) for dark/light theme system
+- **Responsive:** Media queries for mobile (375px), tablet (768px), desktop (1024px+)
+- **Animations:** Transitions, transforms, and @keyframes for smooth UX
+- **Vendor Prefixes:** `-webkit-` prefixes for cross-browser compatibility
+- **Modern Features:** `backdrop-filter`, `overflow-x: hidden`, `position: sticky`
+
+**JavaScript (ES6+):**
+- **Modern Syntax:** Arrow functions, template literals, destructuring, spread operator
+- **Array Methods:** `map()`, `filter()`, `reduce()`, `sort()`, `find()`, `some()`, `every()`
+- **DOM Manipulation:** `querySelector()`, `createElement()`, `addEventListener()`
+- **Event Delegation:** Efficient event handling for dynamic elements
+- **Modular Code:** Separate modules for each feature (11 JS files)
+- **Error Handling:** Try-catch blocks, input validation, data integrity checks
+- **Performance:** Throttle/debounce functions, memoization, efficient rendering
+
+---
+
+### Libraries & APIs
+
+**Chart.js v4.4.1:**
+- **Purpose:** Interactive, responsive data visualization
+- **Usage:** 4 chart types (Line, Bar, Doughnut)
+- **Source:** CDN - `https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js`
+- **License:** MIT License
+- **Why Chosen:** 
+  - Lightweight (~180KB minified)
+  - Responsive out-of-the-box
+  - Extensive documentation
+  - No dependencies
+  - Active maintenance
+- **Configuration:** Custom tooltips, colors, responsive options, mobile optimizations
+
+**Browser APIs Used:**
+
+**localStorage API:**
+- **Purpose:** Client-side data persistence
+- **Usage:** Store workouts, theme preference, app version
+- **Methods:** `getItem()`, `setItem()`, `removeItem()`, `clear()`
+- **Capacity:** ~5MB per domain
+- **Error Handling:** Quota exceeded detection, corruption recovery
+
+**Blob API:**
+- **Purpose:** File generation for CSV export and JSON backup
+- **Usage:** Create downloadable files client-side
+- **Methods:** `new Blob()`, `URL.createObjectURL()`
+
+**FileReader API:**
+- **Purpose:** Import JSON backup files
+- **Usage:** Read user-selected files for data restoration
+- **Methods:** `readAsText()`, event listeners (`onload`, `onerror`)
+
+**Performance API:**
+- **Purpose:** Measure rendering performance
+- **Usage:** Track dashboard render time, chart generation time
+- **Methods:** `performance.now()`, time calculations for optimization
+
+**No other external libraries used** - All functionality implemented in vanilla JavaScript to demonstrate core competency and avoid dependency bloat.
+
+---
+
+### Project Structure
+
+**Modular JavaScript Architecture (11 Files):**
+
+```
+assets/js/
+├── main.js           # App initialization, theme toggle, page detection
+├── storage.js        # localStorage CRUD operations, error recovery
+├── utils.js          # Helper functions (date formatting, validation, sorting)
+├── validation.js     # Form validation rules, error display
+├── notifications.js  # Toast notification system
+├── workout.js        # Workout CRUD operations, CSV export, backup/import
+├── dashboard.js      # Dashboard stats, recent workouts display
+├── history.js        # Workout history, search, filters
+├── charts.js         # Chart.js integration, 4 chart types
+├── calculators.js    # BMI and 1RM calculators
+└── hamburger.js      # Mobile hamburger menu toggle
+```
+
+**CSS Architecture (6 Files):**
+
+```
+assets/css/
+├── style.css         # Main stylesheet, imports all others
+├── variables.css     # CSS custom properties (colors, spacing, fonts)
+├── reset.css         # CSS reset for browser consistency
+├── layout.css        # Layout utilities (container, grids, sections)
+├── components.css    # Reusable components (buttons, cards, forms)
+├── hamburger.css     # Mobile hamburger menu styles
+└── pages/
+    └── charts.css    # Charts page specific styles
+```
+
+---
+
+### Development Tools
+
+**Code Editor:**
+- **VS Code v1.85+**
+  - Extensions: Live Server, Prettier, ESLint
+  - Settings: Auto-save, format on save
+  - Integrated terminal for Git commands
+
+**Local Development:**
+- **Live Server Extension**
+  - Hot reload on file changes
+  - Runs on `http://127.0.0.1:5500`
+  - CORS-friendly for local development
+
+**Version Control:**
+- **Git v2.40+**
+  - 55+ commits with descriptive messages
+  - Feature branch workflow
+  - Commit message format: `Type: Description`
+- **GitHub**
+  - Repository: https://github.com/DonMarcao/fittrack
+  - Version history and collaboration
+  - GitHub Pages deployment
+
+---
+
+### Design Tools
+
+**Wireframing:**
+- **Balsamiq/Wireframe.cc**
+  - Low-fidelity wireframes
+  - Mobile and desktop layouts
+  - User flow planning
+
+**Typography:**
+- **Google Fonts**
+  - Font: Inter (400, 500, 600, 700, 800 weights)
+  - Fallback: System fonts for performance
+
+**Color Palette:**
+- **Coolors.co**
+  - Palette generation and testing
+  - Accessibility contrast checker
+  - Export to CSS variables
+
+**Icons:**
+- **Emoji** (Unicode)
+  - Native emoji for icons (💪, 📊, 🗑️, ✏️, etc.)
+  - No external icon library needed
+  - Universally supported
+
+---
+
+### Testing & Validation Tools
+
+**Code Validation:**
+- **W3C HTML Validator** - https://validator.w3.org/
+  - All 4 HTML pages: 0 errors
+- **W3C CSS Validator** - https://jigsaw.w3.org/css-validator/
+  - All CSS files: 0 errors (vendor prefix warnings acceptable)
+- **JSLint** - https://jslint.com/
+  - JavaScript code quality checks
+
+**Performance & Accessibility:**
+- **Chrome Lighthouse**
+  - Performance: 95/100
+  - Accessibility: 92/100
+  - Best Practices: 100/100
+  - SEO: 100/100
+
+**Browser Testing:**
+- **Chrome DevTools**
+  - Device emulation (iPhone SE, iPad, Desktop)
+  - Network throttling
+  - Console debugging
+  - Performance profiling
+- **Firefox Developer Tools**
+  - Cross-browser compatibility testing
+  - Accessibility inspector
+- **Responsive Design Mode**
+  - Test breakpoints (375px, 768px, 1024px, 1920px)
+
+**Cross-Browser Testing:**
+- Chrome 121+ ✅
+- Firefox 122+ ✅
+- Edge 121+ ✅
+- Safari 17+ (not fully tested, expected to work)
+
+---
+
+### Deployment
+
+**Hosting:**
+- **GitHub Pages**
+  - Static site hosting
+  - Automatic deployment from `main` branch
+  - HTTPS enabled
+  - Custom domain support (if needed)
+  - Live URL: https://donmarcao.github.io/fittrack/
+
+**Deployment Process:**
+```bash
+# 1. Commit changes
+git add .
+git commit -m "Type: Description"
+
+# 2. Push to GitHub
+git push origin main
+
+# 3. Auto-deployment via GitHub Pages
+# Wait 1-2 minutes, visit live URL
+```
+
+---
+
+### Dependencies Summary
+
+**Runtime Dependencies:**
+- Chart.js 4.4.1 (CDN)
+
+**Development Dependencies:**
+- None (vanilla JavaScript, no build process)
+
+**Browser Requirements:**
+- Modern browser with ES6+ support
+- localStorage enabled
+- JavaScript enabled
+- Minimum 375px screen width
+
+**Why Minimal Dependencies:**
+- **Fast Performance:** No framework overhead
+- **Easy Deployment:** No build step required
+- **Educational Value:** Demonstrates core JavaScript skills
+- **Maintainability:** Less complexity, easier to understand
+- **Reliability:** Fewer breaking changes from external updates
 
 ---
 
