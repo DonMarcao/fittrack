@@ -100,23 +100,75 @@ Unlike complex fitness apps with subscriptions and accounts, **FitTrack** focuse
 
 ### User Stories
 
-#### First-Time Visitor Goals
-1. *"As a first-time visitor, I want to understand what FitTrack does within 5 seconds"*
-2. *"As a first-time visitor, I want to add my first workout immediately"*
-3. *"As a first-time visitor, I want to see example data before committing"*
+User stories define the core functionality from the perspective of different user types. All user stories follow the format: **"As a [user type], I want [goal], so that [benefit]."**
 
-#### Returning Visitor Goals
-4. *"As a returning visitor, I want to see my progress at a glance"*
-5. *"As a returning visitor, I want to quickly add today's workout"*
-6. *"As a returning visitor, I want to review past workouts"*
+#### 💪 New User Stories
 
-#### Frequent User Goals
-7. *"As a frequent user, I want to visualize my progress trends"*
-8. *"As a frequent user, I want to export my data for backup"*
-9. *"As a frequent user, I want to calculate training metrics"*
-10. *"As a frequent user, I want to use the app on my phone at the gym"*
+| ID | User Story | Acceptance Criteria | Implementation | Status | Screenshot |
+|----|------------|---------------------|----------------|--------|------------|
+| **US-01** | As a new user, I want to understand the app's purpose immediately, so that I know if it's useful for me | Clear hero section with "Track Your Fitness Progress" messaging | Dashboard with hero text and quick stats | ✅ | [View](#) |
+| **US-02** | As a new user, I want to add my first workout easily, so that I can start tracking immediately | "Add Workout" button prominently displayed, simple form | Primary CTA button, modal form with validation | ✅ | [View](#) |
+| **US-03** | As a new user, I want to see example data or guidance, so that I understand how to use the app | Empty state shows helpful message: "Add your first workout!" | Empty state component with call-to-action | ✅ | [View](#) |
+| **US-04** | As a new user, I want the interface to be intuitive, so that I don't need instructions | Clear labels, standard UI patterns, visual hierarchy | Semantic HTML, consistent styling, logical flow | ✅ | [View](#) |
+| **US-05** | As a new user, I want to know my data is private, so that I feel secure using the app | Clear message: "Your data stays on your device" | localStorage only, no external API calls | ✅ | [View](#) |
 
-[Full user stories with solutions in complete README]
+#### 🏋️ Returning User Stories
+
+| ID | User Story | Acceptance Criteria | Implementation | Status | Screenshot |
+|----|------------|---------------------|----------------|--------|------------|
+| **US-06** | As a returning user, I want to see my workout history, so that I can track what I've done | Workout list displays date, exercise, sets, reps, weight | History page with filterable list | ✅ | [View](#) |
+| **US-07** | As a returning user, I want to add today's workout quickly, so that logging doesn't disrupt training | Form pre-fills with today's date | Date input defaults to current date | ✅ | [View](#) |
+| **US-08** | As a returning user, I want to edit past workouts, so that I can correct mistakes | Edit button on each workout, opens form with data | Edit modal with pre-filled form | ✅ | [View](#) |
+| **US-09** | As a returning user, I want to delete workouts, so that I can remove errors | Delete button with confirmation dialog | Confirmation dialog before deletion | ✅ | [View](#) |
+| **US-10** | As a returning user, I want to search/filter workouts, so that I can find specific sessions | Search by exercise name, filter by date range | Search input and date filter dropdowns | ✅ | [View](#) |
+
+#### 📊 Advanced User Stories
+
+| ID | User Story | Acceptance Criteria | Implementation | Status | Screenshot |
+|----|------------|---------------------|----------------|--------|------------|
+| **US-11** | As an advanced user, I want to see my progress over time, so that I can track improvements | Interactive charts showing weight/volume progression | Chart.js with 4 chart types (Volume, Weight, Sets/Reps, Exercise Breakdown) | ✅ | [View](#) |
+| **US-12** | As an advanced user, I want to identify personal records, so that I can celebrate achievements | PR badge displayed on highest weight for each exercise | PR detection algorithm with visual badge | ❌ | [Future Enhancement](#features-left-to-implement) |
+| **US-13** | As an advanced user, I want to compare exercises, so that I can balance training | Stats dashboard showing volume per muscle group | Statistics aggregation and display | ❌ | [Future Enhancement](#features-left-to-implement) |
+| **US-14** | As an advanced user, I want to export my data, so that I can analyze it elsewhere | "Export to CSV" button downloads all workouts | CSV generation with download trigger | ✅ | [View](#) |
+| **US-15** | As an advanced user, I want to see trends, so that I can adjust my program | Trend lines on charts, average calculations | Chart.js trend line plugin or calculation | ❌ | [Future Enhancement](#features-left-to-implement) |
+
+#### 🧮 Calculator User Stories
+
+| ID | User Story | Acceptance Criteria | Implementation | Status | Screenshot |
+|----|------------|---------------------|----------------|--------|------------|
+| **US-16** | As any user, I want to calculate my BMI, so that I can track body composition goals | BMI calculator with weight/height inputs, result with category | BMI calculator with color-coded results | ✅ | [View](#) |
+| **US-17** | As any user, I want to calculate 1RM, so that I can plan progressive overload | 1RM calculator with weight/reps inputs, estimated max result | 1RM calculator with Epley formula + percentage table | ✅ | [View](#) |
+| **US-18** | As any user, I want calculator results explained, so that I understand the numbers | Tooltips/help text explaining BMI ranges, 1RM usage | Help text and training zones explanation | ✅ | [View](#) |
+
+#### 📱 Mobile & Accessibility Stories
+
+| ID | User Story | Acceptance Criteria | Implementation | Status | Screenshot |
+|----|------------|---------------------|----------------|--------|------------|
+| **US-19** | As any user, I want the app to work on my phone, so that I can log at the gym | Fully responsive design, touch-friendly buttons (44px+) | Mobile-first CSS with media queries, 48px+ touch targets | ✅ | [View](#) |
+| **US-20** | As any user, I want fast performance, so that I don't wait | Instant feedback on actions, no loading delays | Optimized JavaScript, localStorage caching | ✅ | [View](#) |
+| **US-21** | As any user, I want clear feedback on actions, so that I know what happened | Success/error messages for all actions | Toast notification system (success/error/warning/info) | ✅ | [View](#) |
+| **US-22** | As any user, I want keyboard navigation, so that I can use without mouse | Tab order logical, Enter submits forms, Esc closes modals | Focus management and keyboard event handlers | ✅ | [View](#) |
+| **US-23** | As a user with visual impairments, I want screen reader support, so that I can use the app | Alt text, labels, ARIA attributes | ARIA labels on buttons, semantic HTML | ✅ | [View](#) |
+| **US-24** | As any user, I want a professional design, so that the app feels trustworthy | Consistent styling, clear hierarchy, polished UI | Design system with CSS variables, consistent components | ✅ | [View](#) |
+| **US-25** | As any user, I want to choose light/dark theme, so that I match my preference | Theme toggle button, preference saved | Theme switcher with localStorage persistence | ✅ | [View](#) |
+
+#### 🆕 Additional Features Implemented
+
+| ID | User Story | Acceptance Criteria | Implementation | Status | Screenshot |
+|----|------------|---------------------|----------------|--------|------------|
+| **US-26** | As a mobile user, I want easy navigation on small screens, so that I can access all pages | Hamburger menu with slide-in navigation | Responsive hamburger menu with smooth animation | ✅ | [View](#) |
+| **US-27** | As a power user, I want keyboard shortcuts, so that I can work faster | Quick actions accessible via hotkeys | Ctrl+K (Add Workout), Ctrl+E (Export), Ctrl+/ (Shortcuts Help) | ✅ | [View](#) |
+| **US-28** | As any user, I want to backup my data, so that I don't lose progress | Backup/restore functionality with JSON export | JSON backup with metadata, import with confirmation | ✅ | [View](#) |
+| **US-29** | As any user, I want data validation, so that I don't enter invalid workouts | Form validation with helpful error messages | Real-time validation with shake animation, detailed error messages | ✅ | [View](#) |
+| **US-30** | As any user, I want my data to be safe, so that I don't lose it due to corruption | Automatic error recovery and data cleaning | Corrupted data detection with auto-recovery, version tracking | ✅ | [View](#) |
+
+---
+
+### Summary
+
+**Total User Stories:** 30  
+**Completed:** 25 (83.3%)  
+**Planned for Future:** 5 (16.7%)
 
 ---
 
