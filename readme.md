@@ -1066,44 +1066,340 @@ Bugs are tracked with severity levels and documented transparently for assessmen
 
 ## 🚀 Deployment
 
-**Live:** https://donmarcao.github.io/fittrack/
+### GitHub Pages Deployment
 
-Deployed via GitHub Pages with automatic deployment on push to main.
+The site is deployed using GitHub Pages directly from the `main` branch.
+
+**Live Site:** https://donmarcao.github.io/fittrack/
+
+**Deployment Steps:**
+
+1. **Repository Setup:**
+   ```bash
+   git init
+   git add .
+   git commit -m "Initial commit"
+   git remote add origin https://github.com/DonMarcao/fittrack.git
+   git push -u origin main
+   ```
+
+2. **Enable GitHub Pages:**
+   - Go to repository Settings
+   - Navigate to Pages section
+   - Source: Deploy from branch `main`
+   - Folder: `/ (root)`
+   - Click Save
+
+3. **Verify Deployment:**
+   - Site live at: https://donmarcao.github.io/fittrack/
+   - Wait 2-3 minutes for initial deployment
+   - Check GitHub Actions for build status
+
+4. **Automatic Updates:**
+   - Every push to `main` triggers automatic redeployment
+   - Changes live within 1-2 minutes
 
 ---
 
-## ⚠️ Known Issues
+### Local Development
 
-1. Minor horizontal scroll on mobile (375px) - cosmetic only
-2. Chart labels may overlap on very small screens (<320px)
+**Clone Repository:**
+```bash
+git clone https://github.com/DonMarcao/fittrack.git
+cd fittrack
+```
+
+**Run Locally:**
+
+**Option 1: Live Server (VSCode Extension - Recommended)**
+- Install "Live Server" extension in VSCode
+- Right-click `index.html`
+- Select "Open with Live Server"
+- Site opens at http://127.0.0.1:5500
+
+**Option 2: Python HTTP Server**
+```bash
+# Python 3
+python -m http.server 8000
+# Access at http://localhost:8000
+```
+
+**Option 3: Direct File Open**
+- Open `index.html` directly in browser
+- Note: Chart.js requires internet for CDN
+
+**Requirements:**
+- Modern web browser (Chrome 90+, Firefox 88+, Edge 90+, Safari 14+)
+- No build process or dependencies required
+- Pure HTML/CSS/JavaScript - no npm, webpack, or frameworks
 
 ---
 
-## 🚀 Future Enhancements
+## 📝 Development Process
 
-- Exercise database
-- Workout templates
-- PR tracking
-- Progressive overload detection
-- PWA conversion
+### Version Control
+
+**Git Workflow:**
+- Frequent commits (55 total)
+- Small, focused changes per commit
+- Clear, descriptive commit messages
+- Linear history (no branches for solo project)
+- Feature-based commits
+
+**Commit Message Format:**
+```
+Type: Brief description
+
+Examples:
+- Feat: Add workout CRUD operations
+- Fix: Resolve localStorage null error
+- Style: Improve button spacing
+- Docs: Update README with testing results
+- A11y: Add ARIA labels to icon buttons
+```
+
+**Commit Types:**
+- `Feat:` New feature
+- `Fix:` Bug fix
+- `Docs:` Documentation changes
+- `Style:` Code formatting (no logic change)
+- `Refactor:` Code restructuring
+- `Test:` Adding/updating tests
+- `A11y:` Accessibility improvements
+
+---
+
+### Commit History
+
+**Actual Commits by Phase:**
+
+**Days 1-2: Setup & Foundation (Commits 1-21)**
+- Repository initialization
+- HTML structure for all 4 pages
+- CSS foundation (variables, reset, layout, components)
+- JavaScript modules setup
+- localStorage implementation
+- Form validation system
+
+**Day 3: Core Features (Commits 22-40)**
+- Dashboard stats and recent workouts
+- Workout CRUD operations (Add/Edit/Delete)
+- Modal system implementation
+- History page with search and filters
+- Charts page with 4 Chart.js visualizations
+- Calculators (BMI + 1RM)
+- CSV export functionality
+
+**Day 4: Advanced Features (Commits 41-50)**
+- Theme toggle (dark/light)
+- Keyboard shortcuts (Ctrl+K, Ctrl+E, Ctrl+/)
+- JSON backup and import
+- Form validation enhancements
+- Performance optimizations (throttle, memoize)
+- Cross-browser compatibility fixes
+- Responsive design improvements
+
+**Day 5: Mobile & Polish (Commits 51-55)**
+- Hamburger menu for mobile navigation
+- Mobile overflow fixes
+- Final bug fixes
+- README documentation
+- Testing validation
+
+**Total Commits:** 55  
+**Development Time:** 5 days (January 13-17, 2026)  
+**Average:** 11 commits per day  
+**Frequency:** Multiple small, focused commits throughout each day
 
 ---
 
 ## 🙏 Credits
 
-**Developer:** Marcus Machado  
-**Technologies:** Chart.js, Google Fonts (Inter)  
-**Inspiration:** Strong App, FitNotes  
+### Content
+
+**Text Content:**
+- All workout descriptions, calculator explanations, and help text written by Marcus Machado
+- Fitness terminology and best practices based on personal training experience
+- BMI categories sourced from WHO standards
+- 1RM formula (Epley) is public domain
+
+### Media
+
+**Images:**
+- Banner image: Created by Marcus Machado
+- Testing screenshots: Captured from development by Marcus Machado
+- Wireframes: Created by Marcus Machado
+
+**Icons:**
+- Emoji icons used throughout (💪, 📊, 🗑️, ✏️, 🌙, ☀️, etc.)
+- All icons are Unicode characters (no external SVG dependencies)
+- Cross-platform compatible
+
+---
+
+### Code & Technologies
+
+**External Libraries:**
+
+**Chart.js v4.4.1:**
+- Library: https://www.chartjs.org/
+- CDN: https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js
+- License: MIT License
+- Usage: 4 chart types (Line, Bar, Doughnut)
+- Attribution: Linked in HTML `<head>` sections
+
+**Google Fonts - Inter:**
+- Font: https://fonts.google.com/specimen/Inter
+- License: Open Font License (SIL OFL)
+- Usage: All text throughout site
+
+**Browser APIs (No External Libraries):**
+- localStorage API - Client-side data persistence
+- Blob API - CSV/JSON file generation
+- FileReader API - JSON import functionality
+- Performance API - Rendering metrics
+
+**Original Code (100% by Marcus Machado):**
+- ✅ All 11 JavaScript modules (main.js, storage.js, utils.js, validation.js, notifications.js, workout.js, dashboard.js, history.js, charts.js, calculators.js, hamburger.js)
+- ✅ All 6 CSS files (variables.css, reset.css, layout.css, components.css, hamburger.css, charts.css)
+- ✅ All 4 HTML pages (index.html, history.html, charts.html, calculators.html)
+- ✅ All responsive design implementations
+- ✅ All accessibility features (ARIA, keyboard nav)
+- ✅ All form validation logic
+- ✅ All data management (CRUD, export, import)
+
+**Code Validation:**
+- HTML: W3C Nu HTML Checker (0 errors, 0 warnings)
+- CSS: W3C CSS Validator (0 errors, vendor prefix warnings acceptable)
+- JavaScript: JSLint (0 major issues, ES6+ warnings expected)
+
+---
+
+### Acknowledgments
+
+**Special Thanks:**
+
+- **Code Institute:** For providing the Level 5 Full Stack Web Development course structure and learning materials
+- **Claude AI (Anthropic):** For code review assistance, debugging help, and documentation suggestions
+- **Fitness Community:** Personal training experience that inspired this project
+- **W3C & MDN:** For comprehensive web standards documentation
+- **Chart.js Community:** For excellent documentation and examples
+
+**Inspiration:**
+- Existing fitness apps (Strong, FitNotes, JEFIT) for feature ideas
+- Modern web design trends (dark themes, card layouts, mobile-first)
+- Personal need for simple, privacy-focused workout tracking
+
+**Testing & Feedback:**
+- Self-tested across multiple browsers and devices
+- Lighthouse audit for performance validation
+- W3C validators for code quality assurance
 
 ---
 
 ## 📄 License
 
-MIT License - See full license in complete README
+This project is developed for **educational purposes** as part of the Level 5 Full Stack Web Development diploma portfolio.
+
+### MIT License
+
+Copyright (c) 2026 Marcus Machado
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+### Third-Party Licenses
+
+- **Chart.js:** MIT License - https://github.com/chartjs/Chart.js/blob/master/LICENSE.md
+- **Inter Font:** SIL Open Font License - https://github.com/rsms/inter
+
+**Educational Use:** Please credit Marcus Machado if you reference or adapt this code for educational purposes.
 
 ---
 
-**Version:** 1.0.4 
-**Last Updated:** January 2026  
+## 📞 Contact
 
-⭐ **Star this project on GitHub!** ⭐
+**Developer:** Marcus Machado  
+**GitHub:** [@DonMarcao](https://github.com/DonMarcao)  
+**Project Repository:** https://github.com/DonMarcao/fittrack  
+**Live Site:** https://donmarcao.github.io/fittrack/
+
+**For Project Inquiries:**
+- GitHub Issues: https://github.com/DonMarcao/fittrack/issues
+- GitHub Discussions: https://github.com/DonMarcao/fittrack/discussions
+
+---
+
+## 🔮 Future Enhancements
+
+**Planned Features (Post-MVP v2.0+):**
+
+1. **Personal Records Tracking:**
+   - Automatic PR detection per exercise
+   - PR history timeline
+   - Achievement badges and milestones
+
+2. **Advanced Analytics:**
+   - Body weight tracking integration
+   - Body composition trends
+   - Training volume per muscle group
+   - Workout frequency heatmap
+
+3. **Workout Templates:**
+   - Save common workout routines
+   - Quick-add entire sessions
+   - Template library (Push/Pull/Legs, Upper/Lower, etc.)
+
+4. **Calendar Integration:**
+   - Visual calendar view with workout indicators
+   - Workout planning features
+   - Streak visualization with heatmap
+
+5. **Progressive Overload AI:**
+   - Algorithm to suggest weight increases
+   - Deload week recommendations
+   - Plateau detection and solutions
+
+6. **PWA Conversion:**
+   - Install as standalone mobile app
+   - Offline mode improvements
+   - Push notifications for workout reminders
+
+7. **Social Features (Optional):**
+   - Cloud sync (Google Drive/Dropbox integration)
+   - Share workouts with friends
+   - Community challenges and leaderboards
+
+**Note:** Current MVP (v1.0) focuses on core functionality with privacy-first, offline-capable design. Advanced features planned for future iterations based on user feedback.
+
+---
+
+**README Last Updated:** January 17, 2026  
+**Project Status:** ✅ Production Ready  
+**Deployment Status:** ✅ Live on GitHub Pages  
+**Current Version:** 1.0.4
+
+---
+
+💪 **Thank you for reviewing FitTrack!** 💪
+
+*Developed with dedication by Marcus Machado for Level 5 Full Stack Web Development - Milestone 2*
+
+---
+
+⭐ **If you find this project useful or well-documented, please consider giving it a star on GitHub!** ⭐
