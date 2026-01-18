@@ -47,6 +47,14 @@ const Dashboard = {
         if (importBtn) {
             importBtn.addEventListener('click', () => Workout.importData());
         }
+
+        // ============================================
+        // NEW: Clear All Data button
+        // ============================================
+        const clearAllBtn = document.getElementById('clear-all-btn');
+        if (clearAllBtn) {
+            clearAllBtn.addEventListener('click', () => this.handleClearAll());
+        }
     },
 
     /**
@@ -493,6 +501,78 @@ const Dashboard = {
         setTimeout(() => {
             overlay.querySelector('#edit-exercise').focus();
         }, 100);
+    },
+
+    // ============================================
+    // NEW METHOD: Handle Clear All Data
+    // ============================================
+    /**
+     * Handle Clear All Data action
+     * Triple confirmation for safety
+     */
+    handleClearAll() {
+        // First confirmation - Warning
+        const firstConfirm = confirm(
+            '⚠️ WARNING: Clear All Data\n\n' +
+            'This will permanently delete:\n' +
+            '• All workout entries\n' +
+            '• All progress data\n' +
+            '• All statistics\n\n' +
+            'This action CANNOT be undone!\n\n' +
+            'Are you sure you want to continue?'
+        );
+        
+        if (!firstConfirm) {
+            Notifications.show('Clear All cancelled', 'info');
+            return;
+        }
+        
+        // Second confirmation - Final warning
+        const secondConfirm = confirm(
+            '🚨 FINAL WARNING\n\n' +
+            'You are about to delete ALL your workout data.\n' +
+            'This action is PERMANENT and IRREVERSIBLE.\n\n' +
+            'Click OK to proceed with deletion.'
+        );
+        
+        if (!secondConfirm) {
+            Notifications.show('Clear All cancelled - your data is safe', 'info');
+            return;
+        }
+        
+        // Third confirmation - Text input
+        const confirmText = prompt(
+            'Type "DELETE ALL" (exactly as shown, all caps) to confirm permanent deletion:'
+        );
+        
+        if (confirmText !== 'DELETE ALL') {
+            Notifications.show('Clear All cancelled - incorrect confirmation text', 'info');
+            return;
+        }
+        
+        // User confirmed 3 times - proceed with deletion
+        try {
+            // Get count before deletion for logging
+            const workoutCount = Workout.getAllWorkouts().length;
+            
+            // Clear localStorage via Storage module
+            FitTrackStorage.clearAllWorkouts();
+            
+            // Re-render dashboard (will show empty state)
+            this.render();
+            
+            // Show success notification
+            Notifications.show(
+                `Successfully deleted ${workoutCount} workout(s). Starting fresh!`, 
+                'success'
+            );
+            
+            console.log(`✅ Cleared ${workoutCount} workouts from storage`);
+            
+        } catch (error) {
+            console.error('❌ Error clearing all data:', error);
+            Notifications.show('Failed to clear data: ' + error.message, 'error');
+        }
     },
 
     /**
