@@ -227,7 +227,7 @@ const Dashboard = {
         
         card.innerHTML = `
             <div class="workout-info">
-                <h4>${Utils.sanitizeHTML(workout.exercise)}</h4>
+                <h3>${Utils.sanitizeHTML(workout.exercise)}</h3>
                 <p>${Utils.formatDate(workout.date)} • ${workout.sets}×${workout.reps} @ ${workout.weight}kg • ${volume}kg total</p>
             </div>
             <div class="workout-actions">

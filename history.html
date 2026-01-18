@@ -6,6 +6,7 @@
     <title>FitTrack - Workout History</title>
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/hamburger.css">
+    <link rel="stylesheet" href="assets/css/contrast-fixes.css">
 </head>
 <body>
     <!-- Navigation -->
@@ -13,7 +14,7 @@
         <nav>
             <div class="logo">
                 <a href="index.html" style="text-decoration: none; color: inherit;">
-                    <h1>💪 FitTrack</h1>
+                    <span class="logo-text">💪 FitTrack</span>
                 </a>
             </div>
             <ul class="nav-links">
@@ -39,7 +40,7 @@
         </div>
 
         <!-- Filters Section -->
-        <section class="filters">
+        <div class="filters">
             <input type="text" id="search-input" placeholder="Search by exercise name...">
             <select id="date-filter">
                 <option value="all">All Time</option>
@@ -48,32 +49,32 @@
                 <option value="year">Last Year</option>
             </select>
             <button class="btn-secondary btn-small" id="clear-filters">Clear Filters</button>
-        </section>
+        </div>
 
         <!-- Stats Summary -->
-        <section class="stats-summary">
+        <div class="stats-summary">
             <div class="stat-card">
-                <h3>Total Workouts</h3>
+                <h2>Total Workouts</h2>
                 <p class="stat-value" id="total-count">0</p>
             </div>
             <div class="stat-card">
-                <h3>Total Volume</h3>
+                <h2>Total Volume</h2>
                 <p class="stat-value" id="total-volume">0kg</p>
             </div>
             <div class="stat-card">
-                <h3>Exercises</h3>
+                <h2>Exercises</h2>
                 <p class="stat-value" id="unique-exercises">0</p>
             </div>
-        </section>
+        </div>
 
         <!-- Workout List -->
-        <section class="workout-list" id="workout-list">
+        <div class="workout-list" id="workout-list">
             <!-- Empty state (will be replaced by JavaScript) -->
             <div class="empty-state">
                 <p>No workouts found. Start tracking your progress!</p>
                 <button class="btn-primary">Add Your First Workout</button>
             </div>
-        </section>
+        </div>
     </main>
 
     <!-- Footer -->

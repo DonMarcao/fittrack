@@ -24,6 +24,10 @@ body {
     background-color: var(--background-main);
     line-height: var(--line-height-normal);
 }
+.logo-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
 
 /* Footer */
 footer {
