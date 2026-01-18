@@ -1247,26 +1247,26 @@ All features were manually tested following user story acceptance criteria. Test
 ### Chrome Lighthouse Audit
 
 **Tool:** Chrome DevTools Lighthouse  
-**Test URL:** http://127.0.0.1:5500/index.html (Local Development)  
-**Test Date:** January 17, 2026
+**Test URL:** https://donmarcao.github.io/fittrack/  
+**Test Date:** January 18, 2026
 
 #### Desktop Performance
 
 | Metric | Score | Details |
 |--------|-------|---------|
 | **Performance** | 100/100 | Optimal load time, efficient JavaScript execution |
-| **Accessibility** | 89/100 | ARIA labels, keyboard navigation, contrast ratios |
+| **Accessibility** | 92/100 | ARIA labels, keyboard navigation, contrast ratios |
 | **Best Practices** | 96/100 | Modern web standards, secure protocols |
-| **SEO** | 90/100 | Semantic HTML, meta tags, mobile-friendly |
+| **SEO** | 100/100 | Semantic HTML, meta tags, mobile-friendly |
 
 #### Mobile Performance
 
 | Metric | Score | Details |
 |--------|-------|---------|
-| **Performance** | 98/100 | Fast mobile load time, optimized assets |
+| **Performance** | 100/100 | Fast mobile load time, optimized assets |
 | **Accessibility** | 92/100 | Touch-friendly, keyboard accessible, screen reader support |
 | **Best Practices** | 96/100 | HTTPS-ready, no console errors, modern APIs |
-| **SEO** | 90/100 | Mobile-optimized, proper viewport, semantic markup |
+| **SEO** | 100/100 | Mobile-optimized, proper viewport, semantic markup |
 
 **Performance Highlights:**
 - First Contentful Paint: <1s ✅
@@ -1280,6 +1280,27 @@ All features were manually tested following user story acceptance criteria. Test
 
 *Note: Scores may vary slightly between local development and production deployment.*
 
+### Best Practices Note
+
+**Score: 96/100**
+
+Lighthouse flags missing Content Security Policy (CSP) HTTP header. 
+GitHub Pages static hosting does not support custom HTTP headers 
+required for server-side CSP implementation. 
+
+CSP has been implemented via meta tag (prevents XSS attacks), but 
+Lighthouse specifically requires HTTP header implementation for full 
+100/100 score. This is a known limitation affecting all GitHub Pages 
+projects and does not indicate a security vulnerability.
+
+**Alternative solutions** (requires different hosting):
+- Netlify: Supports custom headers via netlify.toml
+- Vercel: Supports custom headers via vercel.json
+- Cloudflare Pages: Supports custom headers via _headers file
+
+For this educational project, GitHub Pages is the required deployment 
+platform per course requirements.
+```
 ---
 
 ### Cross-Browser Compatibility
