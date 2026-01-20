@@ -12,10 +12,10 @@
 **Project Type:** Level 5 Full Stack Web Development - Milestone 2  
 **Submission Date:** January 2026
 ---
-![Project Banner](assets/media/images/screenshots/dashboard-with-data.png)
-![Project Banner](assets/media/images/screenshots/history-page-full.png)
-![Project Banner](assets/media/images/screenshots/charts-page-full.png)
-![Project Banner](assets/media/images/screenshots/onerm-calculator-result.png)
+![Project Banner](assets/media/images/screenshots/features/dashboard-with-data.png)
+![Project Banner](assets/media/images/screenshots/features/history-page-full.png)
+![Project Banner](assets/media/images/screenshots/features/charts-page-full.png)
+![Project Banner](assets/media/images/screenshots/features/onerm-calculator-result.png)
 ---
 
 ## 📋 Table of Contents
