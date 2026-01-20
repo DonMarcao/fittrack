@@ -54,14 +54,14 @@
 
         <!-- Filters Section -->
         <div class="filters">
-            <input type="text" id="search-input" placeholder="Search by exercise name...">
-            <select id="date-filter">
+            <input type="text" id="search-input" placeholder="Search by exercise name..." aria-label="Search workouts by exercise name">
+            <select id="date-filter" aria-label="Filter workouts by date range">
                 <option value="all">All Time</option>
                 <option value="week">Last 7 Days</option>
                 <option value="month">Last 30 Days</option>
                 <option value="year">Last Year</option>
             </select>
-            <button class="btn-secondary btn-small" id="clear-filters">Clear Filters</button>
+            <button class="btn-secondary btn-small" id="clear-filters" aria-label="Clear all filters">Clear Filters</button>
         </div>
 
         <!-- Stats Summary -->
@@ -90,12 +90,7 @@
         </div>
     </main>
 
-    <!-- ==========================================
-     FOOTER WITH SOCIAL LINKS
-     Add this BEFORE closing </body> tag
-     on ALL 4 pages (index, history, charts, calculators)
-     ========================================== -->
-
+    <!-- Footer -->
 <footer class="footer">
     <div class="container">
         <!-- Social Links -->

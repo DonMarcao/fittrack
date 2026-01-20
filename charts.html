@@ -37,7 +37,7 @@
                 <li><a href="charts.html" class="active">Charts</a></li>
                 <li><a href="calculators.html">Calculators</a></li>
             </ul>
-            <button id="theme-toggle" class="btn-icon" title="Toggle theme">🌙</button>
+            <button id="theme-toggle" class="btn-icon" title="Toggle theme" aria-label="Toggle theme">🌙</button>
             <button class="hamburger" aria-label="Toggle menu">
                 <span></span>
                 <span></span>
@@ -55,11 +55,11 @@
 
         <!-- Chart Filters -->
         <div class="chart-filters">
-            <select id="exercise-select">
+            <select id="exercise-select" aria-label="Filter charts by exercise">
                 <option value="">Select Exercise</option>
                 <!-- Will be populated by JavaScript -->
             </select>
-            <select id="time-range">
+            <select id="time-range" aria-label="Filter charts by time range">
                 <option value="week">Last 7 Days</option>
                 <option value="month">Last 30 Days</option>
                 <option value="year">Last Year</option>
@@ -109,12 +109,7 @@
         </div>
     </main>
 
-    <!-- ==========================================
-     FOOTER WITH SOCIAL LINKS
-     Add this BEFORE closing </body> tag
-     on ALL 4 pages (index, history, charts, calculators)
-     ========================================== -->
-
+    
 <footer class="footer">
     <div class="container">
         <!-- Social Links -->

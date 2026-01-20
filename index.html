@@ -79,23 +79,17 @@
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
                 <h2 style="margin: 0;">Recent Workouts</h2>
                 <div style="display: flex; gap: 0.75rem; align-items: center;">
-                    <button id="backup-btn" class="btn-secondary btn-small" title="Backup all data">💾 Backup</button>
-                    <button id="import-btn" class="btn-secondary btn-small" title="Import backup">📥 Import</button>
-                    <button id="export-btn" class="btn-secondary btn-small" title="Export to CSV">📊 Export CSV</button>
-                    <a href="history.html" class="view-all">View All →</a>
-                    <button id="clear-all-btn" class="view-all" title="Clear All Data"> Clear All</button>
+                    <button id="backup-btn" class="btn-secondary btn-small" title="Backup all data" aria-label="Backup all workout data">💾 Backup</button>
+                    <button id="import-btn" class="btn-secondary btn-small" title="Import backup" aria-label="Import all workout data">📥 Import</button>
+                    <button id="export-btn" class="btn-secondary btn-small" title="Export to CSV" aria-label="Export all workout data">📊 Export CSV</button>
+                    <a href="history.html" class="view-all" aria-label="View all workout data">View All →</a>
+                    <button id="clear-all-btn" class="view-all" title="Clear All Data" aria-label="Clear all workout data"> Clear All</button>
                 </div>
             </div>
             <!-- Workouts will be inserted here by JavaScript -->
         </section>
     </main>
-
-    <!-- ==========================================
-     FOOTER WITH SOCIAL LINKS
-     Add this BEFORE closing </body> tag
-     on ALL 4 pages (index, history, charts, calculators)
-     ========================================== -->
-
+    <!-- Footer -->    
 <footer class="footer">
     <div class="container">
         <!-- Social Links -->

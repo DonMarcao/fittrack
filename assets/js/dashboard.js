@@ -239,10 +239,10 @@ const Dashboard = {
                 <p>${Utils.formatDate(workout.date)} • ${workout.sets}×${workout.reps} @ ${workout.weight}kg • ${volume}kg total</p>
             </div>
             <div class="workout-actions">
-                <button class="btn-icon" data-action="edit" data-id="${workout.id}" title="Edit">
+                <button class="btn-icon" data-action="edit" data-id="${workout.id}" title="Edit" aria-label="Edit Workout">
                     ✏️
                 </button>
-                <button class="btn-icon" data-action="delete" data-id="${workout.id}" title="Delete">
+                <button class="btn-icon" data-action="delete" data-id="${workout.id}" title="Delete" aria-label="Delete Workout">
                     🗑️
                 </button>
             </div>
