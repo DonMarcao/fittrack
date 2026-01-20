@@ -420,8 +420,8 @@ font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
 
 ### Lighthouse Scores
 
-**Desktop:** 100/92/96/100 (Performance/Accessibility/Best Practices/SEO)  
-**Mobile:** 100/92/96/100 (Performance/Accessibility/Best Practices/SEO)
+**Desktop:** 100/95/96/100 (Performance/Accessibility/Best Practices/SEO)  
+**Mobile:** 100/95/96/100 (Performance/Accessibility/Best Practices/SEO)
 
 ### Cross-Browser Testing
 

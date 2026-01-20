@@ -37,7 +37,7 @@
 - **HTML:** 0 errors (W3C)
 - **CSS:** 0 errors (W3C)
 - **JavaScript:** 0 major issues (JSLint)
-- **Lighthouse:** Desktop 100/92/96/100, Mobile 100/92/96/100
+- **Lighthouse:** Desktop 100/95/96/100, Mobile 100/95/96/100
 
 ---
 
@@ -259,7 +259,7 @@ While manual testing was the primary methodology, FitTrack also utilized **autom
 - **W3C HTML Validator:** Automated HTML validation (0 errors)
 - **W3C CSS Validator:** Automated CSS validation (0 errors)
 - **JSLint:** Automated JavaScript quality checks (0 major issues)
-- **Chrome Lighthouse:** Automated performance, accessibility, SEO audits (100/98, 92, 96, 100)
+- **Chrome Lighthouse:** Automated performance, accessibility, SEO audits (100/98, 95, 96, 100)
 
 This hybrid approach combined the **flexibility of manual testing** with the **consistency of automated validation**.
 
@@ -438,10 +438,10 @@ For **v2.0+** of FitTrack, automated testing may be beneficial:
 #### Chrome Lighthouse
 
 ![Lighthouse Desktop](assets/media/images/screenshots/validation/desktop-lighthouse-validator.png)
-*Lighthouse Desktop: 100/92/96/100 (Performance/Accessibility/Best Practices/SEO)*
+*Lighthouse Desktop: 100/95/96/100 (Performance/Accessibility/Best Practices/SEO)*
 
 ![Lighthouse Mobile](assets/media/images/screenshots/validation/mobile-lighthouse-validator.png)
-*Lighthouse Mobile: 100/92/96/100*
+*Lighthouse Mobile: 100/95/96/100*
 
 
 ### JSLint JavaScript Validation
@@ -591,7 +591,7 @@ All screenshots demonstrate features working correctly across functionality, and
 - **Test Coverage:** 150+ tests, 96.7% pass rate
 - **Code Quality:** 0 HTML/CSS/JS errors
 - **Performance:** Lighthouse 100/98 (Desktop/Mobile)
-- **Accessibility:** WCAG AA compliant (92/100)
+- **Accessibility:** WCAG AA compliant (95/100)
 - **Cross-Browser:** Fully compatible
 - **Critical Bugs:** 0
 
