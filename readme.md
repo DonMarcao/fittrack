@@ -20,33 +20,36 @@
 
 ## 📋 Table of Contents
 
-1. [Project Overview](#project-overview)
-2. [User Experience Design (UX)](#user-experience-design-ux)
+1. Project Overview
+   - [Overview](#overview)
+2. User Experience Design (UX)
    - [User Stories](#user-stories)
    - [Design Process](#design-process)
    - [Wireframes](#wireframes)
    - [Color Scheme](#color-scheme)
    - [Typography](#typography)
-3. [Features](#features)
+3. Features
    - [Existing Features](#existing-features)
    - [Features Left to Implement](#features-left-to-implement)
-4. [Technologies Used](#technologies-used)
+4. Technologies Used
    - [Languages](#languages)
    - [Libraries](#libraries)
    - [Tools & Programs](#tools--programs)
-5. [Deployment](#deployment)
+5. Deployment
    - [GitHub Pages Deployment](#github-pages-deployment)
    - [Local Development](#local-development)
-6. [Development Process](#development-process)
+6. Development Process
    - [Version Control](#version-control)
    - [Commit History](#commit-history)
-7. [Credits](#credits)
+7. Credits
    - [Content](#content)
    - [Acknowledgments](#acknowledgments)
 
 ---
 
 ## 🎯 Project Overview
+
+### Overview
 
 **FitTrack** is an interactive web application designed to help fitness enthusiasts track their workout progress, visualize improvements over time, and make data-driven training decisions. The application provides:
 
