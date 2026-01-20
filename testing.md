@@ -5,7 +5,7 @@
 **Testing Date:** January 17-18, 2026  
 **Version:** 1.0.0
 
-[← Back to README](README.md)
+[← Back to README](readme.md)
 
 ---
 
@@ -603,4 +603,4 @@ FitTrack demonstrates high quality, comprehensive testing, and production-ready 
 **Tester:** Marcus Machado  
 **Status:** ✅ All tests passed, ready for submission
 
-[← Back to README](README.md)
+[← Back to README](readme.md)

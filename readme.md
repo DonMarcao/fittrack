@@ -393,7 +393,7 @@ font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
 
 ### Manual Testing
 
-**Comprehensive testing documentation available in [TESTING.md](TESTING.md)**
+**Comprehensive testing documentation available in [testing.md](testing.md)**
 
 **Quick Stats:**
 - **Total Tests:** 150+
@@ -587,4 +587,4 @@ Post-MVP features planned for v2.0+:
 
 ---
 
-⭐ **[View Complete Testing Documentation with Screenshots →](TESTING.md)** ⭐
+⭐ **[View Complete Testing Documentation with Screenshots →](testing.md)** ⭐
