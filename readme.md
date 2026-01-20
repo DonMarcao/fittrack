@@ -98,7 +98,7 @@ User stories define the core functionality from the perspective of different use
 **Completed:** 25 (83.3%)  
 **Planned:** 5 future enhancements
 
-[View detailed user stories →](TESTING.md#user-stories-coverage-matrix)
+[View detailed user stories →](testing.md#user-stories-coverage-matrix)
 
 #### Key User Stories
 
