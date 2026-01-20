@@ -1018,3 +1018,181 @@ html {
     background-color: #dc2626;
     border-color: #dc2626;
 }
+
+/* ================================================
+   FOOTER STYLES
+   Add this to assets/css/components.css
+   OR create new file: assets/css/footer.css
+   ================================================ */
+
+/* ===================================
+   Footer Container
+   =================================== */
+
+.footer {
+    background-color: var(--background-card);
+    border-top: 1px solid var(--border-color);
+    padding: 3rem 0 2rem;
+    margin-top: 4rem;
+    text-align: center;
+}
+
+/* Dark theme footer */
+[data-theme="dark"] .footer {
+    background-color: #1e293b;
+    border-top-color: #475569;
+}
+
+/* ===================================
+   Social Links
+   =================================== */
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.social-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: var(--background-hover);
+    color: var(--text-secondary);
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.social-links a:hover {
+    background-color: var(--primary-green);
+    color: #ffffff;
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
+}
+
+.social-links a:focus {
+    outline: 2px solid var(--primary-green);
+    outline-offset: 4px;
+}
+
+/* Dark theme social links */
+[data-theme="dark"] .social-links a {
+    background-color: #334155;
+    color: #94a3b8;
+}
+
+[data-theme="dark"] .social-links a:hover {
+    background-color: var(--primary-green);
+    color: #ffffff;
+}
+
+/* ===================================
+   Footer Text
+   =================================== */
+
+.footer-privacy {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+.footer-copyright {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    margin: 0;
+}
+
+/* Dark theme text */
+[data-theme="dark"] .footer-privacy {
+    color: #cbd5e1;
+}
+
+[data-theme="dark"] .footer-copyright {
+    color: #94a3b8;
+}
+
+/* ===================================
+   Responsive Design
+   =================================== */
+
+/* Mobile (< 768px) */
+@media (max-width: 767px) {
+    .footer {
+        padding: 2rem 0 1.5rem;
+        margin-top: 3rem;
+    }
+
+    .social-links {
+        gap: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .social-links a {
+        width: 44px;
+        height: 44px;
+    }
+
+    .footer-privacy {
+        font-size: 0.875rem;
+        padding: 0 1rem;
+    }
+
+    .footer-copyright {
+        font-size: 0.75rem;
+        padding: 0 1rem;
+    }
+}
+
+/* Tablet (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .footer {
+        padding: 2.5rem 0 1.75rem;
+    }
+
+    .social-links {
+        gap: 1.75rem;
+    }
+}
+
+/* Desktop (1024px+) */
+@media (min-width: 1024px) {
+    .footer {
+        padding: 3rem 0 2rem;
+    }
+
+    .social-links a {
+        width: 52px;
+        height: 52px;
+    }
+}
+
+/* ===================================
+   Accessibility
+   =================================== */
+
+/* High contrast for better visibility */
+@media (prefers-contrast: high) {
+    .social-links a {
+        border: 2px solid currentColor;
+    }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .social-links a {
+        transition: none;
+    }
+
+    .social-links a:hover {
+        transform: none;
+    }
+}
+
+/* ================================================
+   END OF FOOTER STYLES
+   ================================================ */

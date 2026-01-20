@@ -11,14 +11,13 @@
 
 ## 📋 Table of Contents
 
-1. [Testing Overview](#testing-overview)
-2. [Testing Methodology](#testing-methodology)
-3. [Manual Test Cases](#manual-test-cases)
+1. [Testing Overview](#summary)
+2. [Testing Methodology](#overview)
+3. [Manual Test Cases](#case-list)
 4. [Code Validation](#code-validation)
-5. [Screenshots](#screenshots)
-6. [User Stories Coverage](#user-stories-coverage-matrix)
-7. [Cross-Browser Testing](#cross-browser-testing)
-8. [Bug Tracking](#bug-tracking)
+5. [Screenshots](#feature-screenshots)
+6. [Cross-Browser Testing](#browser-testing)
+7. [Bug Tracking](#known-issues)
 
 ---
 
@@ -38,7 +37,7 @@
 - **HTML:** 0 errors (W3C)
 - **CSS:** 0 errors (W3C)
 - **JavaScript:** 0 major issues (JSLint)
-- **Lighthouse:** Desktop 100/92/96/100, Mobile 98/92/96/100
+- **Lighthouse:** Desktop 100/92/96/100, Mobile 100/92/96/100
 
 ---
 
@@ -286,6 +285,8 @@ For **v2.0+** of FitTrack, automated testing may be beneficial:
 
 ## 📝 Manual Test Cases
 
+### Case List
+
 ### Test Suite 1: Dashboard & CRUD Operations (9 tests)
 
 | Test Case | Description | Expected Result | Actual Result | Status |
@@ -413,48 +414,7 @@ For **v2.0+** of FitTrack, automated testing may be beneficial:
 
 ## ✅ Code Validation
 
-### W3C HTML Validation
-
-**Tool:** https://validator.w3.org/
-
-| File | Errors | Warnings | Status |
-|------|--------|----------|--------|
-| index.html | 0 | 1 (H1 in logo)* | ✅ PASS |
-| history.html | 0 | 1 (H1 in logo)* | ✅ PASS |
-| charts.html | 0 | 1 (H1 in logo)* | ✅ PASS |
-| calculators.html | 0 | 1 (H1 in logo)* | ✅ PASS |
-
-*Single warning: H1 element used for logo branding in navigation. This is common practice and doesn't affect functionality or accessibility.
-
-### W3C CSS Validation
-
-**Tool:** https://jigsaw.w3.org/css-validator/
-
-| File | Errors | Warnings | Status |
-|------|--------|----------|--------|
-| All CSS files | 0 | Vendor prefix warnings** | ✅ PASS |
-
-**Vendor prefix warnings (-webkit-, -moz-) are intentional for cross-browser compatibility.
-
-### JSLint JavaScript Validation
-
-**Tool:** https://www.jslint.com/
-
-| File | Major Issues | Minor Warnings | Status |
-|------|--------------|----------------|--------|
-| All JS files (11) | 0 | ES6+ features*** | ✅ PASS |
-
-***ES6+ feature warnings (arrow functions, template literals) are intentional and supported by all modern browsers.
-
----
-
-## 📸 Screenshots
-
-All screenshots demonstrate features working correctly across validation, functionality, and responsive design.
-
 ### Code Validation
-
-#### W3C HTML Validation
 
 ![HTML Validation - Index](assets/media/images/screenshots/index-html-validator.png)
 *W3C HTML Validator - index.html passes with 0 errors, 1 acceptable warning*
@@ -472,6 +432,8 @@ All screenshots demonstrate features working correctly across validation, functi
 
 ![CSS Validation](assets/media/images/screenshots/css-validator.png)
 *W3C CSS Validator - All CSS files pass with 0 errors*
+**Vendor prefix warnings (-webkit-, -moz-) are intentional for cross-browser compatibility.
+
 
 #### Chrome Lighthouse
 
@@ -479,9 +441,22 @@ All screenshots demonstrate features working correctly across validation, functi
 *Lighthouse Desktop: 100/92/96/100 (Performance/Accessibility/Best Practices/SEO)*
 
 ![Lighthouse Mobile](assets/media/images/screenshots/mobile-lighthouse-validator.png)
-*Lighthouse Mobile: 98/92/96/100*
+*Lighthouse Mobile: 100/92/96/100*
+
+
+### JSLint JavaScript Validation
+
+| File | Major Issues | Minor Warnings | Status |
+|------|--------------|----------------|--------|
+| All JS files (11) | 0 | ES6+ features*** | ✅ PASS |
+
+***ES6+ feature warnings (arrow functions, template literals) are intentional and supported by all modern browsers.
 
 ---
+
+## 📸 Screenshots
+
+All screenshots demonstrate features working correctly across functionality, and responsive design.
 
 ### Feature Screenshots
 
@@ -568,29 +543,9 @@ All screenshots demonstrate features working correctly across validation, functi
 
 ---
 
-## 📊 User Stories Coverage Matrix
-
-| User Story ID | Feature | Screenshot | Status |
-|---------------|---------|------------|--------|
-| US-01 | Understand app purpose | `dashboard-with-data.png` | ✅ |
-| US-02 | Add first workout easily | `add-workout-modal.png` | ✅ |
-| US-06-09 | CRUD operations | `add/edit/delete screenshots` | ✅ |
-| US-10 | Search/filter workouts | `history-page-full.png` | ✅ |
-| US-11 | Progress charts | `charts-all-four.png` | ✅ |
-| US-14 | Export data to CSV | `csv-export.png` | ✅ |
-| US-16-18 | Calculators | `bmi/1rm-calculator.png` | ✅ |
-| US-19-21 | Responsive design | `mobile/tablet/desktop.png` | ✅ |
-| US-22-23 | Theme toggle | `theme-light/dark.png` | ✅ |
-| US-26 | Hamburger menu | `mobile-hamburger-open.png` | ✅ |
-| US-27 | Keyboard shortcuts | `keyboard-shortcuts-help.png` | ✅ |
-| US-28 | Backup/Import | `json-backup.png` | ✅ |
-| US-29 | Form validation | `form-validation-errors.png` | ✅ |
-
-**Implementation Rate:** 25/30 user stories (83.3%)
-
----
-
 ## 🌐 Cross-Browser Testing
+
+### Browser Testing
 
 **Desktop Browsers:**
 - ✅ Opera GX (primary)
@@ -641,8 +596,8 @@ FitTrack demonstrates high quality, comprehensive testing, and production-ready 
 
 ---
 
-**Testing Documentation Completed:** January 18, 2026  
+**Testing Documentation Completed:** January 20, 2026  
 **Tester:** Marcus Machado  
 **Status:** ✅ All tests passed, ready for submission
 
-[← Back to README](README.md)
+[← Back to README](readme.md)

@@ -11,7 +11,11 @@
 **Developer:** Marcus Machado  
 **Project Type:** Level 5 Full Stack Web Development - Milestone 2  
 **Submission Date:** January 2026
-
+---
+![Project Banner](assets/media/images/screenshots/dashboard-with-data.png)
+![Project Banner](assets/media/images/screenshots/history-page-full.png)
+![Project Banner](assets/media/images/screenshots/charts-page-full.png)
+![Project Banner](assets/media/images/screenshots/onerm-calculator-result.png)
 ---
 
 ## 📋 Table of Contents
@@ -38,8 +42,6 @@
    - [Commit History](#commit-history)
 7. [Credits](#credits)
    - [Content](#content)
-   - [Media](#media)
-   - [Code](#code)
    - [Acknowledgments](#acknowledgments)
 
 ---
@@ -94,28 +96,54 @@ Unlike complex fitness apps with subscriptions and accounts, **FitTrack** focuse
 
 User stories define the core functionality from the perspective of different user types. All user stories follow the format: **"As a [user type], I want [goal], so that [benefit]."**
 
-**Total:** 30 user stories  
-**Completed:** 25 (83.3%)  
-**Planned:** 5 future enhancements
+#### 💪 New User Stories
 
-[View detailed user stories →](testing.md#user-stories-coverage-matrix)
+| ID | User Story | Acceptance Criteria | Implementation | Status |
+|----|------------|---------------------|----------------|--------|
+| **US-01** | As a new user, I want to understand the app's purpose immediately, so that I know if it's useful for me | Clear hero section with "Track Your Fitness Progress" messaging | Dashboard with hero text and quick stats | ⬜ |
+| **US-02** | As a new user, I want to add my first workout easily, so that I can start tracking immediately | "Add Workout" button prominently displayed, simple form | Primary CTA button, clear form with labels | ⬜ |
+| **US-03** | As a new user, I want to see example data or guidance, so that I understand how to use the app | Empty state shows helpful message: "Add your first workout!" | Empty state component with call-to-action | ⬜ |
+| **US-04** | As a new user, I want the interface to be intuitive, so that I don't need instructions | Clear labels, standard UI patterns, visual hierarchy | Semantic HTML, consistent styling, logical flow | ⬜ |
+| **US-05** | As a new user, I want to know my data is private, so that I feel secure using the app | Clear message: "Your data stays on your device" | Footer text, no external API calls | ⬜ |
 
-#### Key User Stories
+#### 🏋️ Returning User Stories
 
-| ID | Feature | Status |
-|----|---------|--------|
-| US-01 | Understand app purpose immediately | ✅ |
-| US-02 | Add first workout easily | ✅ |
-| US-06-09 | CRUD operations (Add/Edit/Delete/View) | ✅ |
-| US-11 | Visualize progress with charts | ✅ |
-| US-14 | Export data to CSV | ✅ |
-| US-16-18 | BMI & 1RM calculators | ✅ |
-| US-19-21 | Mobile responsive design | ✅ |
-| US-22-23 | Dark/light theme toggle | ✅ |
-| US-26 | Hamburger menu navigation | ✅ |
-| US-27 | Keyboard shortcuts | ✅ |
+| ID | User Story | Acceptance Criteria | Implementation | Status |
+|----|------------|---------------------|----------------|--------|
+| **US-06** | As a returning user, I want to see my workout history, so that I can track what I've done | Workout list displays date, exercise, sets, reps, weight | History page with sortable table/list | ⬜ |
+| **US-07** | As a returning user, I want to add today's workout quickly, so that logging doesn't disrupt training | Form pre-fills with today's date | Date input defaults to current date | ⬜ |
+| **US-08** | As a returning user, I want to edit past workouts, so that I can correct mistakes | Edit button on each workout, opens form with data | Edit modal/page with pre-filled form | ⬜ |
+| **US-09** | As a returning user, I want to delete workouts, so that I can remove errors | Delete button with confirmation dialog | Confirmation modal before deletion | ⬜ | [View](#) |
+| **US-10** | As a returning user, I want to search/filter workouts, so that I can find specific sessions | Search by exercise name, filter by date range | Search input and date filter dropdowns | ⬜ |
 
----
+#### 📊 Advanced User Stories
+
+| ID | User Story | Acceptance Criteria | Implementation | Status |
+|----|------------|---------------------|----------------|--------|
+| **US-11** | As an advanced user, I want to see my progress over time, so that I can track improvements | Interactive charts showing weight progression | Chart.js line graphs with date on X-axis | ⬜ |
+| **US-12** | As an advanced user, I want to export my data, so that I can analyze it elsewhere | "Export to CSV" button downloads all workouts | CSV generation and download trigger | ⬜ |
+
+
+#### 🧮 Calculator User Stories
+
+| ID | User Story | Acceptance Criteria | Implementation | Status |
+|----|------------|---------------------|----------------|--------|
+| **US-13** | As any user, I want to calculate my BMI, so that I can track body composition goals | BMI calculator with weight/height inputs, result with category | BMI page with form and result display | ⬜ |
+| **US-14** | As any user, I want to calculate 1RM, so that I can plan progressive overload | 1RM calculator with weight/reps inputs, estimated max result | 1RM page with Epley formula implementation | ⬜ |
+| **US-15** | As any user, I want calculator results explained, so that I understand the numbers | Tooltips/help text explaining BMI ranges, 1RM usage | Help text sections below calculators | ⬜ |
+
+#### 📱 Mobile & Accessibility Stories
+
+| ID | User Story | Acceptance Criteria | Implementation | Status |
+|----|------------|---------------------|----------------|--------|
+| **US-16** | As any user, I want the app to work on my phone, so that I can log at the gym | Fully responsive design, touch-friendly buttons (44px+) | Mobile-first CSS with media queries | ⬜ |
+| **US-17** | As any user, I want fast performance, so that I don't wait | Instant feedback on actions, no loading delays | Optimized JavaScript, localStorage caching | ⬜ |
+| **US-18** | As any user, I want clear feedback on actions, so that I know what happened | Success/error messages for all actions | Toast notification system | ⬜ |
+| **US-19** | As any user, I want keyboard navigation, so that I can use without mouse | Tab order logical, Enter submits forms, Esc closes modals | Focus management and keyboard event handlers | ⬜ |
+| **US-20** | As a user with visual impairments, I want screen reader support, so that I can use the app | Alt text, labels, ARIA attributes | WCAG AA compliance throughout | ⬜ |
+| **US-21** | As any user, I want a professional design, so that the app feels trustworthy | Consistent styling, clear hierarchy, polished UI | Design system with CSS variables | ⬜ |
+| **US-22** | As any user, I want to choose light/dark theme, so that I match my preference | Theme toggle button, preference saved | Theme switcher with localStorage persistence | ⬜ |
+
 
 ### Design Process
 
@@ -141,27 +169,27 @@ User stories define the core functionality from the perspective of different use
 
 ### Wireframes
 
-Wireframes were created for mobile (375px) and desktop (1024px) views to plan layout and user flow before development.
+Wireframes were created using multiple existing apps as source of design ideias then selected and combine on Lucidcharts on Lucid.app to plan layout and user flow development.
 
-#### Mobile Wireframes
-- **Dashboard:** Quick stats cards, recent workouts, Add Workout CTA
-- **Add Workout Form:** Vertical layout, large touch targets
-- **Workout History:** List view with swipe actions
-- **Charts:** Full-width chart with exercise selector
-- **Calculators:** Stacked input/result layout
+#### Key Wireframes Created:
 
-#### Desktop Wireframes
-- **Dashboard:** Multi-column grid, sidebar navigation
-- **Add Workout Form:** Two-column form layout
-- **Workout History:** Table view with inline actions
-- **Charts:** Side-by-side chart and stats
-- **Calculators:** Side-by-side BMI and 1RM
+**Mobile Experience:**
+- [Mobile Dashboard](docs/wireframes/mobile-dashboard.png) - Stats cards, recent workouts, CTA
+- [Hamburger Navigation](docs/wireframes/mobile-hamburger.png) - Mobile menu system
 
-**Wireframe Files:**
-- [Mobile Dashboard Wireframe](docs/wireframes/mobile-dashboard.png)
-- [Desktop Dashboard Wireframe](docs/wireframes/desktop-dashboard.png)
+**Desktop Experience:**
+- [Desktop Dashboard](docs/wireframes/desktop-dashboard.png) - Multi-column grid layout
 
----
+**Feature Pages:**
+- [Charts Page](docs/wireframes/charts-page.png) - Data visualization layout
+- [Add Workout Modal](docs/wireframes/add-workout-modal.png) - Form design
+
+**Design Decisions from Wireframes:**
+- Mobile-first approach with hamburger navigation
+- Card-based layout for better content organization
+- Prominent "Add Workout" CTA on dashboard
+- Grid system for stats display (1 column mobile, 4 columns desktop)
+- Modal forms for focused user actions
 
 ### Color Scheme
 
@@ -472,7 +500,7 @@ cd fittrack
 
 **Commit Types:** Feat, Fix, Docs, Style, Refactor, Test, A11y
 
-### Development Timeline
+### Commit History
 
 **Commits 1-21:** HTML structure, CSS foundation, JS modules  
 **Commits 22-40:** CRUD operations, History, Charts, Calculators  
