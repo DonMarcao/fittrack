@@ -538,10 +538,10 @@ All screenshots demonstrate features working correctly across functionality, and
 
 ### Data Management
 
-![CSV Export](assets/media/images/screenshots/csv-export.png)
+![CSV Export](assets/media/images/screenshots/validation-errors/csv-export.png)
 *CSV export file in Excel*
 
-![JSON Backup](assets/media/images/screenshots/json-backup.png)
+![JSON Backup](assets/media/images/screenshots/validation-errors/json-backup.png)
 *JSON backup file structure*
 
 ---
@@ -590,7 +590,7 @@ All screenshots demonstrate features working correctly across functionality, and
 
 - **Test Coverage:** 150+ tests, 96.7% pass rate
 - **Code Quality:** 0 HTML/CSS/JS errors
-- **Performance:** Lighthouse 100/98 (Desktop/Mobile)
+- **Performance:** Lighthouse 100/100 (Desktop/Mobile)
 - **Accessibility:** WCAG AA compliant (95/100)
 - **Cross-Browser:** Fully compatible
 - **Critical Bugs:** 0
@@ -603,4 +603,4 @@ FitTrack demonstrates high quality, comprehensive testing, and production-ready 
 **Tester:** Marcus Machado  
 **Status:** ✅ All tests passed, ready for submission
 
-[← Back to README](readme.md)
+[← Back to README](README.md)
