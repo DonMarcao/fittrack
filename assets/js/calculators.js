@@ -1,3 +1,5 @@
+/* jslint browser: true, devel: true */
+// Note: JSLint warnings acknowledged regarding ES6 syntax and quote styles.
 /**
  * Calculators Module
  * Handles BMI and 1RM calculators

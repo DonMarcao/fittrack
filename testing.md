@@ -446,12 +446,28 @@ For **v2.0+** of FitTrack, automated testing may be beneficial:
 
 ### JSLint JavaScript Validation
 
+JSLint Validation Summary
+
+Project Overview: The JavaScript source code for this project was analyzed using JSHint to evaluate code quality and adherence to syntax standards.
+
+Summary of Findings: The validator returned warnings primarily related to ES6+ syntax preferences and formatting conventions. While JSLint flags these as issues, the code is functionally sound and follows modern JavaScript best practices. Key "warnings" acknowledged include:
+
+Syntax & Formatting: The use of single quotes (' ') and optional parentheses in arrow functions was flagged in favor of JSLint's stricter legacy requirements.
+
+Scope & Context: Use of the this keyword was flagged as "unexpected." This is an intentional design choice to maintain object-oriented method scoping within the site's logic.
+
+Global Objects: Warnings regarding document and console were noted; these are expected browser-level globals required for DOM manipulation and debugging.
+
+Conclusion: The code passed functional testing across all target browsers. The linting warnings are stylistic in nature and do not represent logic errors or security vulnerabilities.
+
 | File | Major Issues | Minor Warnings | Status |
 |------|--------------|----------------|--------|
 | All JS files (11) | 0 | ES6+ features*** | ✅ PASS |
 
 ***ES6+ feature warnings (arrow functions, template literals) are intentional and supported by all modern browsers.
 
+![JSHint](assets/media/images/screenshots/validation/main-jshint.png)
+*Validaton report on warnings generated from ES6+ features used in all .js files*
 ---
 
 ## 📸 Screenshots

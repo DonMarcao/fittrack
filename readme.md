@@ -371,14 +371,14 @@ font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
 - **GitHub:** Repository hosting and collaboration
 
 **Design:**
-- **Figma/Pencil:** Wireframe creation
+- **LucidChart/Lucid.App:** Wireframe creation
 - **Google Fonts:** Inter font family
 - **Coolors.co:** Color palette generation and testing
 
 **Testing:**
 - **W3C HTML Validator:** HTML validation
 - **W3C CSS Validator:** CSS validation
-- **ESLint:** JavaScript code quality
+- **JSHint:** JavaScript code quality
 - **Chrome Lighthouse:** Performance and accessibility audit
 
 
@@ -396,8 +396,8 @@ font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
 **Comprehensive testing documentation available in [testing.md](testing.md)**
 
 **Quick Stats:**
-- **Total Tests:** 150+
-- **Pass Rate:** 96.7%
+- **Total Tests:** 72
+- **Pass Rate:** 98.6%
 - **Critical Bugs:** 0
 - **Code Validation:** HTML/CSS/JS - 0 errors
 
@@ -418,7 +418,7 @@ font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
 | Tool | Result |
 |------|--------|
 | W3C HTML | 0 errors (4 pages) |
-| W3C CSS | 0 errors (6 files) |
+| W3C CSS | 0 errors (12 files) |
 | JSLint | 0 major issues (11 files) |
 
 ### Lighthouse Scores

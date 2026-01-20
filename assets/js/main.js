@@ -1,3 +1,5 @@
+/* jslint browser: true, devel: true */
+// Note: JSLint warnings acknowledged regarding ES6 syntax and quote styles.
 /**
  * Main Application Module
  * Handles global app initialization and utilities

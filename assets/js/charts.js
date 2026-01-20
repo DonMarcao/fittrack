@@ -1,3 +1,5 @@
+/* jslint browser: true, devel: true */
+// Note: JSLint warnings acknowledged regarding ES6 syntax and quote styles.
 /**
  * Charts Module
  * Handles progress visualization with Chart.js

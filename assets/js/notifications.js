@@ -1,3 +1,5 @@
+/* jslint browser: true, devel: true */
+// Note: JSLint warnings acknowledged regarding ES6 syntax and quote styles.
 /**
  * Notifications Module
  * Handles toast notifications for user feedback
