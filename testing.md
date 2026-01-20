@@ -416,31 +416,31 @@ For **v2.0+** of FitTrack, automated testing may be beneficial:
 
 ### Code Validation
 
-![HTML Validation - Index](assets/media/images/screenshots/index-html-validator.png)
+![HTML Validation - Index](assets/media/images/screenshots/validation/index-html-validator.png)
 *W3C HTML Validator - index.html passes with 0 errors, 1 acceptable warning*
 
-![HTML Validation - History](assets/media/images/screenshots/history-html-validator.png)
+![HTML Validation - History](assets/media/images/screenshots/validation/history-html-validator.png)
 *W3C HTML Validator - history.html passes with 0 errors*
 
-![HTML Validation - Charts](assets/media/images/screenshots/charts-html-validator.png)
+![HTML Validation - Charts](assets/media/images/screenshots/validation/charts-html-validator.png)
 *W3C HTML Validator - charts.html passes with 0 errors*
 
-![HTML Validation - Calculators](assets/media/images/screenshots/calculators-html-validator.png)
+![HTML Validation - Calculators](assets/media/images/screenshots/validation/calculators-html-validator.png)
 *W3C HTML Validator - calculators.html passes with 0 errors*
 
 #### W3C CSS Validation
 
-![CSS Validation](assets/media/images/screenshots/css-validator.png)
+![CSS Validation](assets/media/images/screenshots/validation/css-validator.png)
 *W3C CSS Validator - All CSS files pass with 0 errors*
 **Vendor prefix warnings (-webkit-, -moz-) are intentional for cross-browser compatibility.
 
 
 #### Chrome Lighthouse
 
-![Lighthouse Desktop](assets/media/images/screenshots/desktop-lighthouse-validator.png)
+![Lighthouse Desktop](assets/media/images/screenshots/validation/desktop-lighthouse-validator.png)
 *Lighthouse Desktop: 100/92/96/100 (Performance/Accessibility/Best Practices/SEO)*
 
-![Lighthouse Mobile](assets/media/images/screenshots/mobile-lighthouse-validator.png)
+![Lighthouse Mobile](assets/media/images/screenshots/validation/mobile-lighthouse-validator.png)
 *Lighthouse Mobile: 100/92/96/100*
 
 
@@ -462,73 +462,76 @@ All screenshots demonstrate features working correctly across functionality, and
 
 #### Dashboard
 
-![Dashboard](assets/media/images/screenshots/dashboard-with-data.png)
+![Dashboard](assets/media/images/screenshots/features/dashboard-with-data.png)
 *Dashboard with workout statistics and recent entries*
 
 #### CRUD Operations
 
-![Add Workout](assets/media/images/screenshots/add-workout-modal.png)
+![Add Workout](assets/media/images/screenshots/features/add-workout-modal.png)
 *Add Workout modal with validation*
 
-![Edit Workout](assets/media/images/screenshots/edit-workout-modal.png)
+![Edit Workout](assets/media/images/screenshots/features/edit-workout-modal.png)
 *Edit Workout modal with pre-filled data*
 
-![Delete Confirmation](assets/media/images/screenshots/delete-workout-confirmation.png)
+![Delete Confirmation](assets/media/images/screenshots/features/delete-workout-confirmation.png)
 *Delete confirmation dialog*
 
 #### History
 
-![History Page](assets/media/images/screenshots/history-page-full.png)
+![History Page](assets/media/images/screenshots/features/history-page-full.png)
 *History page with search and filters*
 
 #### Charts
 
-![Charts](assets/media/images/screenshots/charts-page-full.png)
+![Charts](assets/media/images/screenshots/features/charts-page-full.png)
 *All 4 Chart.js visualizations*
 
 #### Calculators
 
-![BMI Calculator](assets/media/images/screenshots/bmi-calculator-result.png)
+![BMI Calculator](assets/media/images/screenshots/features/bmi-calculator-result.png)
 *BMI Calculator with color-coded result*
 
-![1RM Calculator](assets/media/images/screenshots/onerm-calculator-result.png)
+![1RM Calculator](assets/media/images/screenshots/features/onerm-calculator-result.png)
 *1RM Calculator with percentage table*
 
 #### Theme Toggle
 
-![Light Theme](assets/media/images/screenshots/theme-light.png)
+![Light Theme](assets/media/images/screenshots/features/theme-light.png)
 *Light theme*
 
-![Dark Theme](assets/media/images/screenshots/theme-dark.png)
+![Dark Theme](assets/media/images/screenshots/features/theme-dark.png)
 *Dark theme*
 
 ---
 
 ### Responsive Design
 
-![Mobile Dashboard](assets/media/images/screenshots/mobile-dashboard.png)
+![Mobile Dashboard](assets/media/images/screenshots/responsive/mobile-dashboard.png)
 *Mobile view (375px) with hamburger menu*
 
-![Hamburger Open](assets/media/images/screenshots/hamburger-menu-open.png)
+![Hamburger Open](assets/media/images/screenshots/responsive/hamburger-menu-open.png)
 *Mobile navigation menu open*
 
-![Tablet](assets/media/images/screenshots/tablet-layout.png)
+![Tablet](assets/media/images/screenshots/responsive/tablet-layout.png)
 *Tablet view (768px)*
 
-![Desktop](assets/media/images/screenshots/desktop-full-width.png)
+![Desktop](assets/media/images/screenshots/responsive/desktop-full-width.png)
 *Desktop view (1920px)*
 
 ---
 
 ### Validation & Errors
 
-![Form Validation](assets/media/images/screenshots/form-validation-errors.png)
+![Form Validation](assets/media/images/screenshots/validation-errors/form-validation-errors.png)
 *Form validation errors with visual feedback*
 
-![Toast Notification](assets/media/images/screenshots/toast-notifications.png)
+![Toast Notification](assets/media/images/screenshots/validation-errors/toast-notifications.png)
 *Success toast notification*
 
-![Keyboard Shortcuts](assets/media/images/screenshots/keyboard-shortcuts-help.png)
+![Keyboard Shortcuts](assets/media/images/screenshots/validation-errors/keyboard-shortcuts-help.png)
+*Keyboard shortcuts help modal*
+
+![Console log fully functional](assets/media/images/screenshots/validation-errors/chrome-devtools.png)
 *Keyboard shortcuts help modal*
 
 ---

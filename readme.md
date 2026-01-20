@@ -174,15 +174,15 @@ Wireframes were created using multiple existing apps as source of design ideias 
 #### Key Wireframes Created:
 
 **Mobile Experience:**
-- [Mobile Dashboard](docs/wireframes/mobile-dashboard.png) - Stats cards, recent workouts, CTA
-- [Hamburger Navigation](docs/wireframes/mobile-hamburger.png) - Mobile menu system
+- [Mobile Dashboard](/docs/wireframes/mobile-wireframes.png) - Stats cards, recent workouts, CTA
+- [Hamburger Navigation](/docs/wireframes/mobile-wireframes.png) - Mobile menu system
 
 **Desktop Experience:**
-- [Desktop Dashboard](docs/wireframes/desktop-dashboard.png) - Multi-column grid layout
+- [Desktop Dashboard](/docs/wireframes/dashboard-wireframe.png) - Multi-column grid layout
 
 **Feature Pages:**
-- [Charts Page](docs/wireframes/charts-page.png) - Data visualization layout
-- [Add Workout Modal](docs/wireframes/add-workout-modal.png) - Form design
+- [Charts Page](/docs/wireframes/charts-wireframe.png) - Data visualization layout
+- [Add Workout Modal](/docs/wireframes/modal-wireframe.png) - Form design
 
 **Design Decisions from Wireframes:**
 - Mobile-first approach with hamburger navigation
