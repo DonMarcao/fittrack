@@ -1021,8 +1021,6 @@ html {
 
 /* ================================================
    FOOTER STYLES
-   Add this to assets/css/components.css
-   OR create new file: assets/css/footer.css
    ================================================ */
 
 /* ===================================
@@ -1194,5 +1192,83 @@ html {
 }
 
 /* ================================================
-   END OF FOOTER STYLES
+   MOBILE WORKOUT CARD FIX - TEXT TRUNCATION
+   ================================================ */
+
+@media (max-width: 767px) {
+    /* Fix workout card layout on mobile */
+    .workout-card {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: var(--space-3);
+        padding: var(--space-4);
+        position: relative;
+    }
+
+    /* Workout info takes full width */
+    .workout-info {
+        width: 100%;
+        padding-right: 0;
+    }
+
+    /* Allow text to wrap naturally */
+    .workout-info h4,
+    .workout-info p,
+    .workout-info span {
+        white-space: normal !important;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        max-width: 100%;
+    }
+
+    /* Exercise name */
+    .workout-info h4 {
+        font-size: var(--font-size-h5);
+        margin-bottom: var(--space-2);
+        line-height: 1.3;
+    }
+
+    /* Date and stats text */
+    .workout-info p {
+        font-size: var(--font-size-small);
+        line-height: 1.5;
+        margin: 0;
+    }
+
+    /* Action buttons full width at bottom */
+    .workout-actions {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        gap: var(--space-2);
+        margin-top: var(--space-2);
+    }
+
+    /* Ensure buttons are touch-friendly */
+    .workout-actions .btn-icon {
+        min-width: 44px;
+        min-height: 44px;
+        width: 44px;
+        height: 44px;
+    }
+}
+
+/* Very small screens (iPhone SE, small Android) */
+@media (max-width: 375px) {
+    .workout-card {
+        padding: var(--space-3);
+    }
+
+    .workout-info h4 {
+        font-size: 1rem;
+    }
+
+    .workout-info p {
+        font-size: 0.813rem;
+    }
+}
+
+/* ================================================
+   END OF COMPONENTS.CSS
    ================================================ */
