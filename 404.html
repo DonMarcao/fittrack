@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Page not found - FitTrack">
+    <title>404 - Page Not Found | FitTrack</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/media/favicon.ico">
+    
+    <style>
+        /* CSS Variables for Theme Support */
+        :root {
+            --primary-green: #22c55e;
+            --primary-green-dark: #16a34a;
+            --background: #ffffff;
+            --background-secondary: #f8fafc;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --border-color: #e2e8f0;
+            --error-color: #ef4444;
+        }
+
+        [data-theme="dark"] {
+            --background: #0f172a;
+            --background-secondary: #1e293b;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --border-color: #334155;
+        }
+
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Styling */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--background);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        /* Container */
+        .error-container {
+            text-align: center;
+            max-width: 600px;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        /* 404 Number */
+        .error-code {
+            font-size: 8rem;
+            font-weight: 900;
+            color: var(--primary-green);
+            line-height: 1;
+            margin-bottom: 1rem;
+            text-shadow: 0 4px 12px rgba(34, 197, 94, 0.2);
+        }
+
+        /* Icon */
+        .error-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            animation: bounce 2s infinite;
+        }
+
+        /* Heading */
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        /* Description */
+        .error-description {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        /* Buttons Container */
+        .error-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        /* Button Styling */
+        .btn {
+            padding: 0.875rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: var(--primary-green);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-green-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(34, 197, 94, 0.3);
+        }
+
+        .btn-secondary {
+            background: var(--background-secondary);
+            color: var(--text-primary);
+            border: 2px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background: var(--border-color);
+            transform: translateY(-2px);
+        }
+
+        /* Countdown Timer */
+        .countdown {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin-top: 1rem;
+        }
+
+        .countdown-number {
+            font-weight: 700;
+            color: var(--primary-green);
+        }
+
+        /* Suggestions */
+        .suggestions {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: var(--background-secondary);
+            border-radius: 0.5rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .suggestions h2 {
+            font-size: 1.125rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .suggestions ul {
+            list-style: none;
+            text-align: left;
+        }
+
+        .suggestions li {
+            padding: 0.5rem 0;
+            color: var(--text-secondary);
+        }
+
+        .suggestions a {
+            color: var(--primary-green);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .suggestions a:hover {
+            color: var(--primary-green-dark);
+            text-decoration: underline;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .error-code {
+                font-size: 5rem;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .error-description {
+                font-size: 1rem;
+            }
+
+            .error-actions {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Page not found - FitTrack">
+    <title>404 - Page Not Found | FitTrack</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/media/favicon.ico">
+    
+    <style>
+        /* CSS Variables for Theme Support */
+        :root {
+            --primary-green: #22c55e;
+            --primary-green-dark: #16a34a;
+            --background: #ffffff;
+            --background-secondary: #f8fafc;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --border-color: #e2e8f0;
+        }
+
+        [data-theme="dark"] {
+            --background: #0f172a;
+            --background-secondary: #1e293b;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --border-color: #334155;
+        }
+
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Styling */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--background);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        /* Container */
+        .error-container {
+            text-align: center;
+            max-width: 600px;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        /* 404 Number */
+        .error-code {
+            font-size: 8rem;
+            font-weight: 900;
+            color: var(--primary-green);
+            line-height: 1;
+            margin-bottom: 1rem;
+            text-shadow: 0 4px 12px rgba(34, 197, 94, 0.2);
+        }
+
+        /* Icon */
+        .error-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            animation: bounce 2s infinite;
+        }
+
+        /* Heading */
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        /* Description */
+        .error-description {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        /* Buttons Container */
+        .error-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        /* Button Styling */
+        .btn {
+            padding: 0.875rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: var(--primary-green);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-green-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(34, 197, 94, 0.3);
+        }
+
+        .btn-secondary {
+            background: var(--background-secondary);
+            color: var(--text-primary);
+            border: 2px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background: var(--border-color);
+            transform: translateY(-2px);
+        }
+
+        /* Countdown Timer */
+        .countdown {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin-top: 1rem;
+        }
+
+        .countdown-number {
+            font-weight: 700;
+            color: var(--primary-green);
+            font-size: 1.25rem;
+        }
+
+        /* Suggestions */
+        .suggestions {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: var(--background-secondary);
+            border-radius: 0.5rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .suggestions h2 {
+            font-size: 1.125rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .suggestions ul {
+            list-style: none;
+            text-align: left;
+        }
+
+        .suggestions li {
+            padding: 0.5rem 0;
+            color: var(--text-secondary);
+        }
+
+        .suggestions li::before {
+            content: "→ ";
+            color: var(--primary-green);
+            font-weight: bold;
+        }
+
+        .suggestions a {
+            color: var(--primary-green);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .suggestions a:hover {
+            color: var(--primary-green-dark);
+            text-decoration: underline;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .error-code {
+                font-size: 5rem;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .error-description {
+                font-size: 1rem;
+            }
+
+            .error-actions {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <!-- Error Icon -->
+        <div class="error-icon">🏋️‍♂️</div>
+        
+        <!-- Error Code -->
+        <div class="error-code">404</div>
+        
+        <!-- Error Message -->
+        <h1>Oops! Page Not Found</h1>
+        <p class="error-description">
+            Looks like this workout doesn't exist! The page you're looking for might have been removed, 
+            had its name changed, or is temporarily unavailable.
+        </p>
+        
+        <!-- Action Buttons -->
+        <div class="error-actions">
+            <a href="index.html" class="btn btn-primary">
+                <span>🏠</span>
+                Back to Dashboard
+            </a>
+            <button onclick="history.back()" class="btn btn-secondary">
+                <span>←</span>
+                Go Back
+            </button>
+        </div>
+        
+        <!-- Auto-redirect Countdown -->
+        <div class="countdown">
+            Redirecting to dashboard in <span class="countdown-number" id="countdown">10</span> seconds...
+        </div>
+        
+        <!-- Helpful Links -->
+        <div class="suggestions">
+            <h2>Quick Links</h2>
+            <ul>
+                <li><a href="index.html">Dashboard</a> - View your workout stats</li>
+                <li><a href="history.html">Workout History</a> - See all your workouts</li>
+                <li><a href="charts.html">Progress Charts</a> - Track your progress</li>
+                <li><a href="calculators.html">Calculators</a> - BMI & 1RM tools</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- JavaScript for Auto-redirect -->
+    <script>
+        // Auto-redirect countdown (10 seconds)
+        let countdown = 10;
+        const countdownElement = document.getElementById('countdown');
+        
+        const timer = setInterval(() => {
+            countdown--;
+            countdownElement.textContent = countdown;
+            
+            if (countdown <= 0) {
+                clearInterval(timer);
+                window.location.href = 'index.html';
+            }
+        }, 1000);
+
+        // Load saved theme preference
+        const savedTheme = localStorage.getItem('fittrack_theme') || 'light';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+    </script>
+</body>
+</html>

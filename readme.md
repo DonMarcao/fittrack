@@ -30,6 +30,7 @@
    - [Typography](#typography)
 3. Features
    - [Existing Features](#existing-features)
+   - [404 Page](#404-page)
    - [Features Left to Implement](#features-left-to-implement)
 4. Technologies Used
    - [Languages](#languages)
@@ -329,6 +330,22 @@ font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
 - Form validation with shake animation
 - localStorage quota detection
 - Data corruption auto-recovery
+
+
+### 404 page
+
+## Error Handling
+
+Overview
+The 404.html page is a custom error page that handles invalid URLs and routes users back to the FitTrack application. It provides a user-friendly experience when visitors attempt to access non-existent pages.
+
+- Automatically redirects users to the dashboard after 10 seconds
+- Provides manual navigation options
+- Includes quick links to all main pages
+- Supports light/dark theme preferences
+- Works seamlessly with GitHub Pages
+
+**Test it:** [Invalid URL Example](https://donmarcao.github.io/fittrack/test-404)
 
 ### Features Left to Implement
 

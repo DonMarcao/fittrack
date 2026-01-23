@@ -17,7 +17,8 @@
 4. [Code Validation](#code-validation)
 5. [Screenshots](#feature-screenshots)
 6. [Cross-Browser Testing](#browser-testing)
-7. [Bug Tracking](#known-issues)
+7. [404 page](#404-error-page)
+8. [Bug Tracking](#known-issues)
 
 ---
 
@@ -576,6 +577,22 @@ All screenshots demonstrate features working correctly across functionality, and
 - ✅ Chrome DevTools (iPhone SE, iPad)
 
 **Testing Results:** All features working correctly across tested browsers and devices.
+
+---
+
+
+## 404 Error Page Testing
+
+### 404 Error Page
+
+### Test Cases:
+- [x] Invalid URL shows custom 404 page
+- [x] Auto-redirect countdown works (10 seconds)
+- [x] "Back to Dashboard" button navigates correctly
+- [x] "Go Back" button uses browser history
+- [x] Quick links all work
+- [x] Theme preference loads correctly
+- [x] Responsive on mobile devices
 
 ---
 
