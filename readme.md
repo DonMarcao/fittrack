@@ -12,6 +12,8 @@
 **Project Type:** Level 5 Full Stack Web Development - Milestone 2  
 **Submission Date:** January 2026
 ---
+### FINAL PROJECT VIEW
+
 ![Project Banner](assets/media/images/screenshots/features/dashboard-with-data.png)
 ![Project Banner](assets/media/images/screenshots/features/history-page-full.png)
 ![Project Banner](assets/media/images/screenshots/features/charts-page-full.png)
