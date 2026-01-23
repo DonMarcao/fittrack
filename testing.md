@@ -602,8 +602,7 @@ All screenshots demonstrate features working correctly across functionality, and
 
 | Bug # | Description | Severity | Status |
 |-------|-------------|----------|--------|
-| #1 | Minor horizontal scroll on mobile (375px) | 🟡 Medium | Open |
-| #2 | Chart labels overlap <320px | 🟢 Low | Open |
+| #1 | Chart labels overlap <320px | 🟢 Low | Open |
 
 ### Fixed Bugs
 
@@ -614,6 +613,7 @@ All screenshots demonstrate features working correctly across functionality, and
 | #3 | Theme toggle missing | Jan 17 | Added button |
 | #4 | Validation accepting decimals | Jan 16 | Added integer check |
 | #5 | Data corruption not handled | Jan 16 | Auto-recovery |
+| #6 | Minor horizontal scroll on mobile | Jan 20 | Reordered HTML structure |
 
 ---
 
